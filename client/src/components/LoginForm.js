@@ -1,11 +1,14 @@
-import {useState, createContext} from 'react'
+import {useState} from 'react'
+import { Redirect as redirect} from "react-router-dom";
+
 
 
 function LoginForm({onLogin, setClick}) {
-  const [username, setUsername] = useState({name: '', auth: true})
+  const [username, setUsername] = useState("")
   const [password, setPassword] = useState("")
   const [errors, setErrors] = useState([])
-  
+  const [authenticated, setAuth] = useState(null)
+  console.log(errors)
   
 
   function handleSubmit(e) {
@@ -19,7 +22,7 @@ function LoginForm({onLogin, setClick}) {
       }).then((r) => {
         if (r.ok) {
           r.json().then((user) => onLogin(user))
-          .then(alert("Successfully logged in!"))
+          .then(redirect("/home"))
         } else {
           r.json().then((err) => setErrors(err.errors));
         }
@@ -27,13 +30,14 @@ function LoginForm({onLogin, setClick}) {
     }
 
     
+    
   return (
     <div>
       <h1>Login</h1>
     <form onSubmit={handleSubmit}>
       <label>
         Username: 
-        <input type="text" name="userName" onChange={(e) => setUsername({name: e.target.value, auth: true})} />
+        <input type="text" name="userName" onChange={(e) => setUsername(e.target.value)} />
       </label>
       <label>
         Password:

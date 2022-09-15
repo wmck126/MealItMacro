@@ -1,13 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import {UserProvider} from './UserContext'
+
 import App from './App';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <UserProvider>
     <App />
-  </UserProvider>
 );
 
 // If you want to start measuring performance in your app, pass a function
