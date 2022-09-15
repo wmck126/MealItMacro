@@ -1,8 +1,17 @@
-import React from 'react'
+import {useState} from 'react'
+import LoginForm from './LoginForm'
+import SignupForm from './SignupForm'
 
-function Login() {
+
+function Login({onLogin}) {
+  const [clicked, setClick] = useState(false)
+
+  console.log(clicked)
+
   return (
-    <div>Login</div>
+    <div>
+    {clicked ? <SignupForm onLogin={onLogin} setClick={setClick} /> : <LoginForm onLogin={onLogin} setClick={setClick}/>}
+    </div>
   )
 }
 
