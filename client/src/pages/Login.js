@@ -1,12 +1,12 @@
 import {useState} from 'react'
-import LoginForm from './LoginForm'
-import SignupForm from './SignupForm'
+import LoginForm from '../components/LoginForm'
+import SignupForm from '../components/SignupForm'
 
 
 function Login({onLogin}) {
   const [clicked, setClick] = useState(false)
+  const userContext = createContext({ name: '', auth: false})
 
-  console.log(clicked)
 
   return (
     <div>

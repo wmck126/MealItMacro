@@ -1,11 +1,11 @@
-import {useState} from 'react'
-import SignupForm from './SignupForm'
+import {useState, createContext} from 'react'
 
 
 function LoginForm({onLogin, setClick}) {
-  const [username, setUsername] = useState("")
+  const [username, setUsername] = useState({name: '', auth: true})
   const [password, setPassword] = useState("")
   const [errors, setErrors] = useState([])
+  
   
 
   function handleSubmit(e) {
@@ -33,7 +33,7 @@ function LoginForm({onLogin, setClick}) {
     <form onSubmit={handleSubmit}>
       <label>
         Username: 
-        <input type="text" name="userName" onChange={(e) => setUsername(e.target.value)} />
+        <input type="text" name="userName" onChange={(e) => setUsername({name: e.target.value, auth: true})} />
       </label>
       <label>
         Password:

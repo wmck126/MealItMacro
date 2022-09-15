@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
-import Login from "./Login";
+import Login from "./pages/Login";
 import Signup from "./Signup";
 
 function App() {
