@@ -19,3 +19,9 @@
 #floatingInput1{
   margin-top: 30px;
 }
+
+#onClick {
+  cursor: pointer;
+  color: blue;
+  text-decoration: underline
+}
