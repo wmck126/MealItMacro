@@ -1,0 +1,63 @@
+<?xml version="1.0"?>
+<svg xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns="http://www.w3.org/2000/svg" xmlns:cc="http://web.resource.org/cc/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:svg="http://www.w3.org/2000/svg" id="svg1888" viewBox="0 0 197.76 118.9" version="1.0">
+  <g id="layer1" transform="translate(-278.26 -397.28)">
+    <g id="g1878" transform="matrix(.34038 0 0 .34038 234.96 267.15)" fill-rule="evenodd">
+      <path id="path10" d="m388.66 426.24v0.02-0.02c-36.07-0.11-68.79 14.43-92.52 38.03-23.74 23.59-38.48 56.22-38.58 92.29h0.02v0.01h-0.02c-0.11 36.07 14.43 68.78 38.02 92.52 23.6 23.73 56.23 38.47 92.3 38.58v-0.02h0.01v0.02c36.06 0.11 68.78-14.44 92.51-38.03 23.74-23.59 38.48-56.22 38.58-92.29h-0.02v-0.01h0.02c0.11-36.07-14.43-68.79-38.02-92.52-23.6-23.74-56.23-38.47-92.3-38.58z" class="fil0" fill="#fff"/>
+      <path id="path12" class="fil1" fill-rule="nonzero" d="m388.7 415.1v0.02c39.18 0.12 74.59 16.1 100.17 41.83 25.58 25.74 41.34 61.24 41.23 100.42h0.02v0.01h-0.02c-0.12 39.18-16.1 74.59-41.83 100.17s-61.24 41.35-100.42 41.23v0.02-0.02c-39.18-0.12-74.6-16.09-100.18-41.83-25.58-25.73-41.34-61.24-41.23-100.41h-0.02v-0.01h0.02c0.12-39.18 16.1-74.6 41.83-100.18 25.74-25.58 61.24-41.34 100.42-41.23v-0.02h0.01zm-0.04 11.14v0.02-0.02c-36.07-0.11-68.79 14.43-92.52 38.03-23.74 23.59-38.48 56.22-38.58 92.29h0.02v0.01h-0.02c-0.11 36.07 14.43 68.78 38.02 92.52 23.6 23.73 56.23 38.47 92.3 38.58v-0.02h0.01v0.02c36.06 0.11 68.78-14.44 92.51-38.03 23.74-23.59 38.48-56.22 38.59-92.29h-0.03v-0.01h0.03c0.1-36.07-14.44-68.79-38.03-92.52-23.6-23.74-56.23-38.47-92.3-38.58z"/>
+      <path id="path14" d="m388.53 470.42v0.01h-0.01v-0.01c-23.88-0.07-45.54 9.55-61.25 25.17s-25.46 37.22-25.53 61.1h0.01v0.01h-0.01c-0.07 23.88 9.55 45.54 25.17 61.25 15.61 15.71 37.22 25.47 61.1 25.54v-0.01h0.01v0.01c23.88 0.07 45.54-9.56 61.25-25.17 15.71-15.62 25.46-37.23 25.54-61.11h-0.02 0.02c0.07-23.88-9.56-45.54-25.18-61.25-15.61-15.71-37.22-25.47-61.1-25.54z" class="fil0" fill="#fff"/>
+      <path id="path16" class="fil1" fill-rule="nonzero" d="m388.55 464.85v0.01c25.43 0.08 48.43 10.45 65.04 27.16 16.61 16.72 26.85 39.77 26.77 65.2h0.01v0.01h-0.01c-0.07 25.44-10.45 48.43-27.16 65.04s-39.76 26.85-65.2 26.78v0.01h-0.01v-0.01c-25.43-0.08-48.43-10.46-65.04-27.17s-26.85-39.76-26.77-65.2h-0.01 0.01c0.08-25.44 10.45-48.43 27.16-65.05 16.71-16.61 39.77-26.84 65.2-26.77v-0.01h0.01zm-0.02 5.57v0.01h-0.01v-0.01c-23.88-0.07-45.54 9.55-61.25 25.17s-25.46 37.22-25.53 61.1h0.01v0.01h-0.01c-0.07 23.88 9.55 45.54 25.17 61.25 15.61 15.71 37.22 25.47 61.1 25.54v-0.01h0.01v0.01c23.88 0.07 45.54-9.56 61.25-25.17 15.71-15.62 25.46-37.23 25.54-61.11h-0.02 0.02c0.07-23.88-9.56-45.54-25.18-61.25-15.61-15.71-37.22-25.47-61.1-25.54z"/>
+      <path id="path18" d="m391.69 669.39c42.04-5.35 89.4-29.5 113.47-73.32-13.91 34.03-41.66 77.22-113.51 85.29 0.01-3.99-3.92-11.46 0.04-11.97z" class="fil2"/>
+      <path id="path20" d="m218.32 495.46l-0.52 168.46c0 2.62-4.58 4.74-10.18 4.73-5.59-0.02-10.17-2.18-10.15-4.79l0.5-168.45c-9.55-4.55-16.24-15.28-16.2-27.76 0.04-11.71 5.98-21.84 14.62-26.75l-0.11 37.11 5.88 0.02 0.13-39.54c0.83-0.22 1.69-0.4 2.55-0.52l-0.12 40.07 5.88 0.02 0.12-40.2c0.69 0.07 1.37 0.17 2.05 0.3l-0.13 39.91 5.88 0.01 0.12-37.95c9.45 4.6 16.07 15.27 16.03 27.68-0.04 12.48-6.79 23.16-16.35 27.65z" class="fil2"/>
+      <path id="path22" d="m557.87 538.12l-0.37 126.82c-0.01 2.61 4.56 4.77 10.15 4.78 5.6 0.02 10.18-2.11 10.19-4.72 0.32-72.31-0.31-144.72 0.65-217.02 1.02-2.03-19.37 12.15-24.51 30.45-3.08 22.61 1.65 48.04 3.89 59.68v0.01z" class="fil2"/>
+      <path id="path24" d="m637.28 496.68l-0.5 168.45c-0.01 2.62-4.59 4.74-10.19 4.73-5.59-0.02-10.17-2.17-10.16-4.79l0.51-168.45c-9.55-4.56-16.24-15.28-16.2-27.76 0.05-16.57 11.94-29.97 26.54-29.93 14.61 0.04 26.41 13.52 26.36 30.09-0.04 12.48-6.79 23.16-16.36 27.66z" class="fil2"/>
+    </g>
+  </g>
+  <metadata>
+    <rdf:RDF>
+      <cc:Work>
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+        <cc:license rdf:resource="http://creativecommons.org/licenses/publicdomain/"/>
+        <dc:publisher>
+          <cc:Agent rdf:about="http://openclipart.org/">
+            <dc:title>Openclipart</dc:title>
+          </cc:Agent>
+        </dc:publisher>
+        <dc:title>couvert</dc:title>
+        <dc:date>2006-09-10T15:05:26</dc:date>
+        <dc:description>A plate with cutlery.</dc:description>
+        <dc:source>http://openclipart.org/detail/123/couvert-by-molumen</dc:source>
+        <dc:creator>
+          <cc:Agent>
+            <dc:title>molumen</dc:title>
+          </cc:Agent>
+        </dc:creator>
+        <dc:subject>
+          <rdf:Bag>
+            <rdf:li>black &amp; white</rdf:li>
+            <rdf:li>clip art</rdf:li>
+            <rdf:li>clipart</rdf:li>
+            <rdf:li>eat</rdf:li>
+            <rdf:li>eating</rdf:li>
+            <rdf:li>food</rdf:li>
+            <rdf:li>fork</rdf:li>
+            <rdf:li>icon</rdf:li>
+            <rdf:li>knife</rdf:li>
+            <rdf:li>menu</rdf:li>
+            <rdf:li>plate</rdf:li>
+            <rdf:li>porcelain</rdf:li>
+            <rdf:li>restaurant</rdf:li>
+            <rdf:li>spoon</rdf:li>
+            <rdf:li>symbol</rdf:li>
+            <rdf:li>vintage</rdf:li>
+          </rdf:Bag>
+        </dc:subject>
+      </cc:Work>
+      <cc:License rdf:about="http://creativecommons.org/licenses/publicdomain/">
+        <cc:permits rdf:resource="http://creativecommons.org/ns#Reproduction"/>
+        <cc:permits rdf:resource="http://creativecommons.org/ns#Distribution"/>
+        <cc:permits rdf:resource="http://creativecommons.org/ns#DerivativeWorks"/>
+      </cc:License>
+    </rdf:RDF>
+  </metadata>
+</svg>

@@ -1,7 +1,6 @@
 import {useState} from 'react'
 import { Redirect as redirect} from "react-router-dom";
-
-
+import './Login.css'
 
 function LoginForm({onLogin, setClick}) {
   const [username, setUsername] = useState("")
@@ -34,23 +33,25 @@ function LoginForm({onLogin, setClick}) {
     
     
   return (
-    <div>
-      <h1>Login</h1>
+    <div id="loginForm" className='container'>
+      <h1 id="loginTitle">Login</h1>
     <form onSubmit={handleSubmit}>
-      <label>
-        Username: 
-        <input type="text" name="userName" onChange={(e) => setUsername(e.target.value)} />
-      </label>
-      <label>
-        Password:
-        <input type="password" name="password" onChange={(e) => setPassword(e.target.value)} />
-      </label>
-      <button onClick={handleSubmit}>Submit</button>
+      <div className='form-outline mb-4'>
+        <label className='form-label'>
+          <input id="floatingInput1" placeholder="Username" className='form-control' type="text" name="userName" onChange={(e) => setUsername(e.target.value)} />
+        </label>
+      </div>
+      <div className='form-outline mb-4'>
+        <label className='form-label'>
+          <input id="floatingInput2" placeholder="Password" className='form-control' type="password" name="password" onChange={(e) => setPassword(e.target.value)} />
+        </label>
+      </div>
+      <button onClick={handleSubmit} className="btn btn-primary btn-block mb-4">Submit</button>
     </form>
     <p style={{color: 'red'}}>{errors}</p>
     
-    <p>No Login?</p>
-    <button onClick={() => setClick(true)}>Sign up!</button>
+    <p>No Login? <a onClick={() => setClick(true)} href="!#">Sign up!</a></p> 
+    
     </div>
   )
   }

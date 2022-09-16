@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { BrowserRouter as Router, Route, Redirect } from "react-router-dom";
-import NavBar from "./components/NavBar";
+import NavBar from "./components/NavBar/NavBar";
 import { UserContext } from "./components/UserContext";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
