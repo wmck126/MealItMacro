@@ -7,7 +7,6 @@ function LoginForm({onLogin, setClick}) {
   const [username, setUsername] = useState("")
   const [password, setPassword] = useState("")
   const [errors, setErrors] = useState([])
-  const [authenticated, setAuth] = useState(null)
   console.log(errors)
   
 
@@ -22,9 +21,9 @@ function LoginForm({onLogin, setClick}) {
       }).then((r) => {
         if (r.ok) {
           r.json().then((user) => onLogin(user))
-          .then(redirect("/home"))
+          .then(redirect("/"))
         } else {
-          r.json().then((err) => setErrors(err.errors));
+          r.json().then((err) => setErrors(err.error));
         }
       });
     }
@@ -43,8 +42,10 @@ function LoginForm({onLogin, setClick}) {
         Password:
         <input type="password" name="password" onChange={(e) => setPassword(e.target.value)} />
       </label>
+      <button onClick={handleSubmit}>Submit</button>
     </form>
-    <button onClick={handleSubmit}>Submit</button>
+    <p style={{color: 'red'}}>{errors}</p>
+    
     <p>No Login?</p>
     <button onClick={() => setClick(true)}>Sign up!</button>
     </div>
