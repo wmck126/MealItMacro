@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { BrowserRouter as Router, Route, Redirect } from "react-router-dom";
 import NavBar from "./components/NavBar";
 import { UserContext } from "./components/UserContext";
 import Home from "./pages/Home";
@@ -7,17 +7,26 @@ import Login from "./pages/Login";
 import Signup from "./Signup";
 
 function App() {
-  
   const [user, setUser] = useState(null);
   console.log("This is user: ", user)
 
   useEffect(() => {
-    fetch("/me")
-    .then((r) => {
-      if(r.ok){
-        r.json().then((user) =>console.log(user))
-      }
-    })
+    const loggedInUser = localStorage.getItem("user")
+    if(!loggedInUser){
+      Redirect("/login")
+    }
+    else {
+      const foundUser = JSON.parse(loggedInUser)
+      console.log(foundUser)
+      setUser(foundUser)
+      Redirect("/")
+    }
+    // fetch("/me")
+    // .then((r) => {
+    //   if(r.ok){
+    //     r.json().then((user) =>setUser(user))
+    //   }
+    // })
   }, [])
   
   

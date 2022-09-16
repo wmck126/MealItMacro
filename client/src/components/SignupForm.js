@@ -20,7 +20,10 @@ function SignupForm({onLogin, setClick}) {
       }),
     }).then((r) => {
       if (r.ok) {
-        r.json().then((user) => onLogin(user))
+        r.json().then((user) => {
+          onLogin(user)
+          localStorage.setItem("user", JSON.stringify(user))
+        })
         .then(setClick(false))
       } else {
         r.json().then((err) => setErrors(err.errors));
