@@ -50,7 +50,8 @@ function LoginForm({onLogin, setClick}) {
     </form>
     <p style={{color: 'red'}}>{errors}</p>
     
-    <p>No Login? <a onClick={() => setClick(true)} id="onClick">Sign up!</a></p> 
+    <p>No Login? </p>
+    <p onClick={() => setClick(true)} id="onClick">Sign up!</p> 
     
     </div>
   )

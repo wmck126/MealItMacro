@@ -1,4 +1,5 @@
 import {useState} from 'react'
+import './Signup.css'
 
 function SignupForm({onLogin, setClick}) {
   const [username, setUsername] = useState("")
@@ -32,26 +33,29 @@ function SignupForm({onLogin, setClick}) {
   }
 
   return (
-    <div>
-      <h1>Signup</h1>
-      <form onSubmit={handleSubmit}>
-          <label>
-            Username: 
-            <input type="text" name="userName" onChange={(e) => setUsername(e.target.value)} />
+    <div id="signupForm" className='container'>
+      <h1 id="signupTitle">Signup</h1>
+      <form onSubmit={handleSubmit} >
+        <div className='form-outline mb-4'>
+          <label className='form-label'>
+            <input id="floatingInput1" placeholder="Username" className='form-control' type="text" name="userName" onChange={(e) => setUsername(e.target.value)} />
           </label>
+        </div>
+        <div className='form-outline mb-4'>
           <label>
-            Password:
-            <input type="password" name="password" onChange={(e) => setPassword(e.target.value)} />
+            <input id="floatingInput" placeholder="Password" className='form-control' type="password" name="password" onChange={(e) => setPassword(e.target.value)} />
           </label>
+        </div>
+        <div className='form-outline mb-4'>
           <label>
-            Password Confirmation:
-            <input type="password" name="password" onChange={(e) => setPasswordConf(e.target.value)} />
+            <input id="floatingInput" placeholder="Password Confirmation" className='form-control' type="password" name="password" onChange={(e) => setPasswordConf(e.target.value)} />
           </label>
+        </div>
+        <button onClick={handleSubmit} className="btn btn-primary btn-block mb-4">Submit</button>
       </form>
-      
-      <button onClick={handleSubmit}>Submit</button>
+      <p styl={{color: 'red'}}>{errors}</p>
       <p>Have an account?</p>
-      <button onClick={() => setClick(false)}>Login</button>
+      <p onClick={() => setClick(false)} id="onClick">Login</p>
     </div>
   )
 }

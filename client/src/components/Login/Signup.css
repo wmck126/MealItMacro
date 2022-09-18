@@ -1,8 +1,8 @@
-#loginForm {
+#signupForm {
   display: flex;
   flex-direction: column;
   width: 400px;
-  height: 450px;
+  height: 500px;
   justify-content: center;
   align-items: center;
   
