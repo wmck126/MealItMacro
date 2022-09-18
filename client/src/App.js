@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { BrowserRouter as Router, Route, Redirect } from "react-router-dom";
 import NavBar from "./components/NavBar/NavBar";
 import { UserContext } from "./components/UserContext";
+import CreateProfile from "./pages/CreateProfile";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Signup from "./Signup";
@@ -30,7 +31,7 @@ function App() {
   }, [])
   
   
-  if (!user) return (<Login onLogin={setUser} />) 
+  if (!user) return (<CreateProfile onLogin={setUser} />) 
   
     
     
@@ -49,6 +50,9 @@ function App() {
           </Route>
           <Route path="/" exact>
             <Home />
+          </Route>
+          <Route path="/createProfile">
+            <CreateProfile user={user.username}/>
           </Route>
         </UserContext.Provider>
       </Router>

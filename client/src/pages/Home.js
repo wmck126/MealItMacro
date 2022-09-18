@@ -10,7 +10,6 @@ function Home() {
   return (
     <div>
     <p>Hello, {user}</p>
-    
     </div>
   )
 }

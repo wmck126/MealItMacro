@@ -1,8 +1,9 @@
 import React from 'react'
+import CreateProfileForm from '../components/CreateProfileForm'
 
 function CreateProfile() {
   return (
-    <div>CreateProfile</div>
+    <CreateProfileForm />
   )
 }
 
