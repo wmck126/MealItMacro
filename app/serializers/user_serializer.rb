@@ -3,7 +3,7 @@ class UserSerializer < ActiveModel::Serializer
   :username, 
   :created_at, 
   :name,
-  :image_url,
+  
   :weight,
   :height,
   :carb_goal,

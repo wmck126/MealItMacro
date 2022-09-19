@@ -1,9 +1,9 @@
 import React from 'react'
 import CreateProfileForm from '../components/CreateProfileForm'
 
-function CreateProfile() {
+function CreateProfile({user, setUser}) {
   return (
-    <CreateProfileForm />
+    <CreateProfileForm user={user} setUser={setUser}/>
   )
 }
 

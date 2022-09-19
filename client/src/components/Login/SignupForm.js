@@ -1,4 +1,5 @@
 import {useState} from 'react'
+import { Redirect } from 'react-router-dom'
 import './Signup.css'
 
 function SignupForm({onLogin, setClick}) {
@@ -26,6 +27,8 @@ function SignupForm({onLogin, setClick}) {
           localStorage.setItem("user", JSON.stringify(user))
         })
         .then(setClick(false))
+        .then(<Redirect to="/createProfile" path="/createProfile"/>)
+        .then(console.log("Redirecting"))
       } else {
         r.json().then((err) => setErrors(err.errors));
       }
@@ -53,7 +56,7 @@ function SignupForm({onLogin, setClick}) {
         </div>
         <button onClick={handleSubmit} className="btn btn-primary btn-block mb-4">Submit</button>
       </form>
-      <p styl={{color: 'red'}}>{errors}</p>
+      <p style={{color: 'red'}}>{errors}</p>
       <p>Have an account?</p>
       <p onClick={() => setClick(false)} id="onClick">Login</p>
     </div>

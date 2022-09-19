@@ -22,37 +22,26 @@ function App() {
       setUser(foundUser)
       Redirect("/")
     }
-    // fetch("/me")
-    // .then((r) => {
-    //   if(r.ok){
-    //     r.json().then((user) =>setUser(user))
-    //   }
-    // })
   }, [])
   
-  
-  if (!user) return (<CreateProfile onLogin={setUser} />) 
-  
-    
-    
-  
+  if (!user) return (<Login onLogin={setUser} />) 
 
   return (
     <div>
       <NavBar setUser={setUser} />
       <Router>
-        <UserContext.Provider value ={user.username}>
+        <UserContext.Provider value ={user.name}>
           <Route path="/login">
             <Login />
           </Route>
           <Route path="/signup">
             <Signup onLogin={setUser} />
           </Route>
-          <Route path="/" exact>
+          <Route path="/home" exact>
             <Home />
           </Route>
           <Route path="/createProfile">
-            <CreateProfile user={user.username}/>
+            <CreateProfile user={user} setUser={setUser}/>
           </Route>
         </UserContext.Provider>
       </Router>

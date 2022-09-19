@@ -1,5 +1,5 @@
 import {useState} from 'react'
-import { Redirect as redirect} from "react-router-dom";
+import { Redirect} from "react-router-dom";
 import './Login.css'
 
 function LoginForm({onLogin, setClick}) {
@@ -23,7 +23,7 @@ function LoginForm({onLogin, setClick}) {
             onLogin(user)
             localStorage.setItem("user", JSON.stringify(user))
           })
-          .then(redirect("/"))
+          .then(<Redirect to="/home" path="/home"/>)
         } else {
           r.json().then((err) => setErrors(err.error));
         }

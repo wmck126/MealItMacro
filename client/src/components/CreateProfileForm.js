@@ -1,7 +1,9 @@
 import {useState} from 'react'
+import {Redirect} from 'react-router-dom'
 
-function CreateProfileForm() {
-  const [count, setCount] = useState(0)
+function CreateProfileForm({user, setUser}) {
+  const id = user.id
+  console.log("this is user id", id)
   const [name, setName] = useState("")
   const [imageUrl, setImageUrl] = useState("")
   const [weight, setWeight] = useState(0)
@@ -12,75 +14,70 @@ function CreateProfileForm() {
   const [activityLevel, setActivityLevel] = useState(0)  
   const [bmi, setBmi] = useState(0)
   const [weightGoal, setWeightGoal] = useState(0)
+  const [errors, setErrors] = useState("")
 
   function handleSubmit(e){
-  if (count === 3) {
+    
     e.preventDefault()
-    fetch("/signup", {
+    const inputBMI = ( (weight / (height * height)) * 703)
+    console.log("this is BMI", inputBMI)
+    fetch(`/users/${id}`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ 
-        count,
+      body: JSON.stringify({
         name,
         weight,
         height,
-        carbGoal, 
-        proteinGoal, 
-        fatGoal,
-        activityLevel,
-        weightGoal,
+        carb_goal: carbGoal, 
+        protein_goal: proteinGoal, 
+        fat_goal: fatGoal,
+        activity_level: activityLevel,
+        weight_goal: weightGoal,
+        bmi: inputBMI,
       }),
     }).then((r) => {
       if (r.ok) {
-        r.json().then((user) => {
-          onLogin(user)
-          localStorage.setItem("user", JSON.stringify(user))
+        r.json()
+        .then((user) => {
+        setUser(user)
+        localStorage.setItem("user", JSON.stringify(user))
         })
-        .then(setClick(false))
+        .then(<Redirect to="/" path="/home"/>)
+        .then(console.log('Redirecting..'))
       } else {
-        r.json().then((err) => setErrors(err.errors));
+        r.json().then((err) => setErrors(err.errors)).then(console.log(errors));
       }
     })
   }
-}
+
 
   return (
   <div>
-    {count === 0 && (
-      <form >
-          <label>Name: </label>
-            <input type="text" onChange={(e) => setName(e.target.value)}/>
-          <label>Height: </label>
-            <input type="text" onChange={(e) => setHeight(e.target.value)}/>
-          <label>Weight: </label>
-            <input type="text" onChange={(e) => setWeight(e.target.value)}/>
-          <button onClick={() => setCount(1)}>Submit</button>
-        </form>
-    )}
-    {count === 1 && (
-      <form >
-      <label>Carb goals: </label>
-        <input type="text" onChange={(e) => setCarbGoal(e.target.value)}/>
-      <label>Fat goals: </label>
-        <input type="text" onChange={(e) => setFatGoal(e.target.value)}/>
-      <label>Protein goals: </label>
-        <input type="text" onChange={(e) => setProteinGoal(e.target.value)}/>
-      <button onClick={() => setCount(2)}>Submit</button>
-    </form>
-    )}
-    {count === 2 && (
-      <form >
+      <form onSubmit={handleSubmit}>
+        <label>Name: </label>
+          <input type="text" onChange={(e) => setName(e.target.value)}/>
+        <label>Height: </label>
+          <input type="text" onChange={(e) => setHeight(e.target.value)}/>
+        <label>Weight: </label>
+          <input type="text" onChange={(e) => setWeight(e.target.value)}/>
+        
+        <label>Carb goals: </label>
+          <input type="text" onChange={(e) => setCarbGoal(e.target.value)}/>
+        <label>Fat goals: </label>
+          <input type="text" onChange={(e) => setFatGoal(e.target.value)}/>
+        <label>Protein goals: </label>
+          <input type="text" onChange={(e) => setProteinGoal(e.target.value)}/>
+        
         <label>Activity Levels: </label>
           <input type="text" onChange={(e) => setActivityLevel(e.target.value)}/>
         <label>What is your weight goal?: </label>
           <input type="text" onChange={(e) => setWeightGoal(e.target.value)}/>
-        <label>Protein goals: </label>
-          <input type="text" onChange={(e) => setHeight(e.target.value)}/>
-        <button onClick={() => setCount(3)}>Submit</button>
+
+        <button onClick={handleSubmit}>Submit</button>
       </form>
-    )}
+      <p style={{color: 'red'}}>{errors}</p>
   </div>
   )
 }
