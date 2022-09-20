@@ -1,9 +1,8 @@
 import {useState} from 'react'
-import {Redirect} from 'react-router-dom'
+import {redirect} from 'react-router-dom'
 
 function CreateProfileForm({user, setUser}) {
   const id = user.id
-  console.log("this is user id", id)
   const [name, setName] = useState("")
   const [imageUrl, setImageUrl] = useState("")
   const [weight, setWeight] = useState(0)
@@ -17,7 +16,6 @@ function CreateProfileForm({user, setUser}) {
   const [errors, setErrors] = useState("")
 
   function handleSubmit(e){
-    
     e.preventDefault()
     const inputBMI = ( (weight / (height * height)) * 703)
     console.log("this is BMI", inputBMI)
@@ -44,12 +42,13 @@ function CreateProfileForm({user, setUser}) {
         setUser(user)
         localStorage.setItem("user", JSON.stringify(user))
         })
-        .then(<Redirect to="/" path="/home"/>)
-        .then(console.log('Redirecting..'))
+        
       } else {
         r.json().then((err) => setErrors(err.errors)).then(console.log(errors));
       }
     })
+    .then(redirect("/"))
+    .then(console.log('Redirecting..'))
   }
 
 

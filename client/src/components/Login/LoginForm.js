@@ -1,8 +1,9 @@
 import {useState} from 'react'
-import { Redirect} from "react-router-dom";
+import {redirect} from "react-router-dom";
 import './Login.css'
 
 function LoginForm({onLogin, setClick}) {
+
   const [username, setUsername] = useState("")
   const [password, setPassword] = useState("")
   const [errors, setErrors] = useState([])
@@ -19,11 +20,12 @@ function LoginForm({onLogin, setClick}) {
         body: JSON.stringify({ username, password }),
       }).then((r) => {
         if (r.ok) {
-          r.json().then((user) => {
+          r.json()
+          .then(redirect("/"))
+          .then((user) => {
             onLogin(user)
             localStorage.setItem("user", JSON.stringify(user))
           })
-          .then(<Redirect to="/home" path="/home"/>)
         } else {
           r.json().then((err) => setErrors(err.error));
         }

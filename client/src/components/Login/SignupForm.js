@@ -1,5 +1,5 @@
 import {useState} from 'react'
-import { Redirect } from 'react-router-dom'
+import {redirect } from 'react-router-dom'
 import './Signup.css'
 
 function SignupForm({onLogin, setClick}) {
@@ -20,19 +20,21 @@ function SignupForm({onLogin, setClick}) {
         password,
         password_confirmation: passwordConf,
       }),
-    }).then((r) => {
+    })
+    .then((r) => {
       if (r.ok) {
-        r.json().then((user) => {
+        r.json()
+        .then((user) => {
           onLogin(user)
           localStorage.setItem("user", JSON.stringify(user))
         })
-        .then(setClick(false))
-        .then(<Redirect to="/createProfile" path="/createProfile"/>)
-        .then(console.log("Redirecting"))
       } else {
         r.json().then((err) => setErrors(err.errors));
       }
-    });
+    })
+    .then(redirect("/createProfile"))
+    .then(setClick(false))
+    .then(console.log("Redirecting"));
   }
 
   return (
