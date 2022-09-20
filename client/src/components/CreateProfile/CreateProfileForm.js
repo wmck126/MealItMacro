@@ -15,6 +15,7 @@ function CreateProfileForm({user, setUser}) {
   const [bmi, setBmi] = useState(0)
   const [weightGoal, setWeightGoal] = useState(0)
   const [errors, setErrors] = useState("")
+  console.log(errors)
 
   function handleSubmit(e){
     e.preventDefault()
