@@ -1,7 +1,8 @@
 import {useState} from 'react'
-import {redirect} from 'react-router-dom'
+import {useNavigate} from 'react-router-dom'
 
 function CreateProfileForm({user, setUser}) {
+  const navigate = useNavigate()
   const id = user.id
   const [name, setName] = useState("")
   const [imageUrl, setImageUrl] = useState("")
@@ -47,7 +48,7 @@ function CreateProfileForm({user, setUser}) {
         r.json().then((err) => setErrors(err.errors)).then(console.log(errors));
       }
     })
-    .then(redirect("/"))
+    .then(() => navigate("/"))
     .then(console.log('Redirecting..'))
   }
 

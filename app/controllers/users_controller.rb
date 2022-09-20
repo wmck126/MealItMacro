@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  skip_before_action :authorize, only: [:create, :index]
+  skip_before_action :authorize, only: [:index, :create, :update]
 
   def create
     user = User.create(user_params)
@@ -12,15 +12,19 @@ class UsersController < ApplicationController
   end
   
   def show
-    user = User.find(params[:id])
-    render json: user, status: :ok
+    user = User.find_by(id: session[:user_id])
+    if user
+      render json: user, status: :ok
+    else
+      render json: {error: "Not authorized"}, status: :unauthorized
+    end
   end
 
   def update
     user = User.find_by(id: params[:id])
     if user
-      user.update(profile_params)
-      render json: user, status: :ok
+      user.update!(profile_params)
+      render json: user
     else 
       render json: {error: "User not found"}, status: :not_found
     end
@@ -39,16 +43,6 @@ class UsersController < ApplicationController
   end
 
   def profile_params
-    params.permit(
-      :name,
-      :image_url,
-      :weight,
-      :height,
-      :carb_goal,
-      :protein_goal,
-      :fat_goal,
-      :activity_level,
-      :bmi,
-      :weight_goal)
+    params.require(:user).permit(:id, :name, :image_url, :weight, :height, :carb_goal, :protein_goal, :fat_goal, :activity_level, :bmi, :weight_goal)
   end
 end

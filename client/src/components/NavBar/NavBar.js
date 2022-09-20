@@ -1,11 +1,11 @@
 import React from 'react'
 
-function NavBar({setUser}) {
+function NavBar({onLogout}) {
   function handleLogout(e) {
     e.preventDefault()
     fetch("/logout", {method: 'DELETE'})
     .then(() => {
-      setUser(null)
+      onLogout()
       localStorage.removeItem("user")
     })
   }

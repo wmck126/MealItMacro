@@ -1,8 +1,9 @@
 import {useState} from 'react'
-import {redirect } from 'react-router-dom'
+import {useNavigate } from 'react-router-dom'
 import './Signup.css'
 
 function SignupForm({onLogin, setClick}) {
+  const navigate = useNavigate()
   const [username, setUsername] = useState("")
   const [password, setPassword] = useState("")
   const [passwordConf, setPasswordConf] = useState("")
@@ -32,7 +33,7 @@ function SignupForm({onLogin, setClick}) {
         r.json().then((err) => setErrors(err.errors));
       }
     })
-    .then(redirect("/createProfile"))
+    .then(navigate("createProfile"))
     .then(setClick(false))
     .then(console.log("Redirecting"));
   }

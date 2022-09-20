@@ -27,20 +27,27 @@ function App() {
   }, [])
   
   if (!user) return (<Login onLogin={setUser} />) 
+
+  function handleLogout() {
+    setUser(null)
+  }
+
+  function handleLogin(loggedIn) {
+    setUser(loggedIn)
+  }
   
 
   return (
     <div>
-      <NavBar setUser={setUser} />
+      <NavBar onLogout={handleLogout} />
       <UserContext.Provider value ={user}>
-        <BrowserRouter>
+        
           <Routes>
             <Route path="/" exact element={<Home />}/>
-            <Route path="login" element={<Login />}/>
-            <Route path="signup" element={<SignupForm onLogin={setUser} />}/>
-            <Route path="createProfile" element={<CreateProfile user={user} setUser={setUser}/>}/>
+            <Route path="/login" element={<Login onLogin={handleLogin}/>}/>
+            <Route path="/signup" element={<SignupForm onLogin={setUser} />}/>
+            <Route path="/createProfile" element={<CreateProfile user={user} setUser={setUser}/>}/>
           </Routes>
-        </BrowserRouter>
       </UserContext.Provider>
     </div>
   );
