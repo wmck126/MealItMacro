@@ -9,14 +9,14 @@ import Login from "./pages/Login";
 ;
 
 function App() {
-  
   const [user, setUser] = useState(null);
   console.log("This is user: ", user)
 
   useEffect(() => {
     const loggedInUser = localStorage.getItem("user")
+    const redirection = () => redirect("/login")
     if(!loggedInUser){
-      return redirect("/login")
+      return redirection
     }
     else {
       const foundUser = JSON.parse(loggedInUser)
