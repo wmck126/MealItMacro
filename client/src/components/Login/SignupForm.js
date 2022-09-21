@@ -50,22 +50,24 @@ function SignupForm({onLogin, setClick}) {
         <div className='form-outline mb-4'>
           <label className='form-label'>
             <input id="floatingInput1" placeholder="Username" className='form-control' type="text" name="userName" onChange={(e) => setUsername(e.target.value)} />
-          </label>
+          
           <li id="userNameHelp" style={validUsername.test(username) ? null : {color: 'red'}} class="form-text">Username must be at least 5 characters</li>
+          </label>
         </div>
 
         <div className='form-outline mb-4'>
           <label>
-            <input id="floatingInput" placeholder="Password" className='form-control' type="password" name="password" onChange={(e) => setPassword(e.target.value)} />
-          </label>
+            <input id="floatingInput2" placeholder="Password" className='form-control' type="password" name="password" onChange={(e) => setPassword(e.target.value)} />
+          
           <li id="passHelp" style={password6chars.test(password) ? null : {color: 'red'}} class="form-text">Password must be at least 6 characters</li>
           <li id="passHelp" style={password1num.test(password) ? null : {color: 'red'}} class="form-text">Password must have at least 1 number</li>
           <li id="passHelp" style={password1uppcase.test(password) ? null : {color: 'red'}} class="form-text">Password must have at least 1 uppercase letter</li>
+          </label>
         </div>
 
         <div className='form-outline mb-4'>
           <label>
-            <input id="floatingInput" placeholder="Password Confirmation" className='form-control' type="password" name="password" onChange={(e) => setPasswordConf(e.target.value)} />
+            <input id="floatingInput2" placeholder="Password Confirmation" className='form-control' type="password" name="password" onChange={(e) => setPasswordConf(e.target.value)} />
           </label>
         </div>
 

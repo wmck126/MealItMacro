@@ -6,12 +6,13 @@ class User < ApplicationRecord
   (?=.*[A-Z]) #At least 1 uppercase letter
   /x
 
-  USERNAME_REQUIREMENTS = /\a
-  (?=.{5,}) #At least 5 characters
-  /x
+  # USERNAME_REQUIREMENTS = /\a
+  # (?=.{5,}) #At least 5 characters
+  # /x
 
-  validates :username, format: USERNAME_REQUIREMENTS, uniqueness: true
-  validates :password, format: PASSWORD_REQUIREMENTS
+  validates :username, uniqueness: true, presence: true
+  #validates :password, format: PASSWORD_REQUIREMENTS
+  ## Some reason password will not allow PATCH requests go through
   has_secure_password
 
   
