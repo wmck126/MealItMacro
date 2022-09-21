@@ -7,7 +7,7 @@ function CreateProfileForm({user, setUser}) {
   const navigate = useNavigate()
   const id = user.id
   const [name, setName] = useState("")
-  const [imageUrl, setImageUrl] = useState("")
+  // const [imageUrl, setImageUrl] = useState("")
   const [weight, setWeight] = useState(0)
   const [height, setHeight] = useState(0)
   const [carbGoal, setCarbGoal] = useState(0)
