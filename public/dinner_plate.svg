@@ -1,0 +1,54 @@
+<?xml version="1.0"?>
+<svg xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns="http://www.w3.org/2000/svg" xmlns:cc="http://web.resource.org/cc/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:sodipodi="http://inkscape.sourceforge.net/DTD/sodipodi-0.dtd" xmlns:svg="http://www.w3.org/2000/svg" id="svg2" height="360.89pt" sodipodi:version="0.32" width="465.28pt" version="1.0" sodipodi:docname="dinner_plate.svg" sodipodi:docbase="/home/travfar/SVG">
+  <sodipodi:namedview id="base" bordercolor="#666666" borderopacity="1.0" pagecolor="#ffffff"/>
+  <g id="layer1">
+    <path id="path3150" d="m23.419 154.38c0 29.01 25.46 137.75 31.846 162.98 4.719 18.64 11.91 37.82 20.267 54.32 11.025 21.78 37.158 29.19 57.898 34.31 29.99 7.4 64.72 8.58 95.55 8.58 29.01 0 61.03-9.27 88.87-16.15 6.82-1.68 24.62-3.81 31.38-5.71 26.26-7.42 39.71-14.06 67.93-21.03 19.19-4.74 39.26-16.93 55.01-28.59 19.52-14.46 34.83-32.52 49.22-51.47 2.89-3.81 5.79-7.62 8.68-11.43 11.11-14.63 17.37-39.13 17.37-57.19 0-21.96 2.94-38.5-5.79-60.04-8.59-21.21-27.49-35.73-43.42-51.46-18.95-18.71-33.49-37.893-55.89-48.951-22.84-11.278-55.88-11.727-81.06-20.015-31.74-10.446-70.09-13.953-103.35-13.953h-75.28c-25.82 0-23.13 4.035-47.86 8.92-17.46 3.449-111.37 83.169-111.37 116.88z" sodipodi:nodetypes="csssssssssssssssssss" fill="#fff290" fill-rule="evenodd"/>
+    <path id="path1307" sodipodi:rx="171.42857" sodipodi:ry="142.85715" sodipodi:type="arc" sodipodi:start="0.71065329" sodipodi:open="true" stroke-linecap="round" transform="matrix(1.0078 0 0 1.2093 -132.13 -219.5)" stroke="#000" sodipodi:cy="360.93362" sodipodi:cx="422.85715" stroke-miterlimit="0" fill="none" stroke-width="11.3" sodipodi:end="5.2610102" d="m552.79 454.12a171.43 142.86 0 1 1 -40.53 -215.08"/>
+    <path id="path2182" sodipodi:rx="171.42857" sodipodi:ry="142.85715" sodipodi:type="arc" sodipodi:start="3.8342633" sodipodi:open="true" stroke-linecap="round" transform="matrix(.75036 0 0 .89940 -22.568 -111.21)" stroke="#000" sodipodi:cy="360.93362" sodipodi:cx="422.85715" stroke-miterlimit="0" fill="none" stroke-width="11.3" sodipodi:end="7.8537776" d="m290.94 269.71a171.43 142.86 0 1 1 131.95 234.08"/>
+    <path id="path4031" d="m450.83 139.1l0.51-44.032s-0.76-8.806 6.38-8.806c6.89 0 5.61 8.806 5.61 8.806l-0.25 44.032s-0.77 4.4 5.1 4.66 4.85-4.92 4.85-4.92l-0.25-43.254s-0.52-9.324 5.61-9.324c6.12 0 4.85 9.583 4.85 9.583v44.285s1.91 3.82 6.12 3.63c4.21-0.2 4.91-3.69 5.04-3.6l0.57-44.056s0-9.324 5.36-9.583 5.36 9.583 5.36 9.583l-0.26 46.616s2.86 37.66-14.58 40.2c-15.44 2.24 6.09 133.94 0.33 137.86-5.44 3.71-6.81 4.36-11.91 4.62s-10.09-1.6-13.35-5.35c-6.01-6.91 13.08-136.23 1.53-137.9-15.04-2.18-16.87-43.31-16.62-43.05z" sodipodi:nodetypes="cczccsccscczccsccsszssc" stroke="#000" stroke-width="5.883" fill="none"/>
+    <path id="path8399" d="m53.905 111.24c6.889-13.206 20.922-15.369 27.045-15.369 6.124 0 22.62 1.473 27.3 16.409 4.74 15.12 2.6 84.28-14.841 86.81-15.44 2.24 6.092 133.95 0.335 137.87-5.446 3.7-6.809 4.35-11.912 4.61s-9.59-0.58-12.85-4.34c-6.006-6.91 12.578-135.72 1.033-137.39-15.043-2.18-22.999-75.39-16.11-88.6z" sodipodi:nodetypes="csssszsss" stroke="#000" stroke-width="5.883" fill="none"/>
+    <path id="path8401" sodipodi:rx="16.920055" sodipodi:ry="26.769043" sodipodi:type="arc" sodipodi:start="4.6031352" sodipodi:open="true" stroke-linecap="round" transform="matrix(1 0 0 1.2465 -76.772 -252.75)" stroke="#000" sodipodi:cy="319.49652" sodipodi:cx="160.36171" fill="none" stroke-width="5.883" sodipodi:end="7.9096749" d="m158.52 292.89a16.92 26.769 0 1 1 0.9 53.33"/>
+  </g>
+  <metadata>
+    <rdf:RDF>
+      <cc:Work>
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+        <cc:license rdf:resource="http://creativecommons.org/licenses/publicdomain/"/>
+        <dc:publisher>
+          <cc:Agent rdf:about="http://openclipart.org/">
+            <dc:title>Openclipart</dc:title>
+          </cc:Agent>
+        </dc:publisher>
+        <dc:title>Dinner Plate with Spoon and Fork</dc:title>
+        <dc:date>2007-03-22T20:26:09</dc:date>
+        <dc:description>A basic plate with a spoon and fork. It was drawn very quickly and is meant to be simplistic yet elegant.</dc:description>
+        <dc:source>http://openclipart.org/detail/3641/dinner-plate-with-spoon-and-fork-by-iammisc</dc:source>
+        <dc:creator>
+          <cc:Agent>
+            <dc:title>iammisc</dc:title>
+          </cc:Agent>
+        </dc:creator>
+        <dc:subject>
+          <rdf:Bag>
+            <rdf:li>clip art</rdf:li>
+            <rdf:li>clipart</rdf:li>
+            <rdf:li>dinner</rdf:li>
+            <rdf:li>food</rdf:li>
+            <rdf:li>fork</rdf:li>
+            <rdf:li>image</rdf:li>
+            <rdf:li>line art</rdf:li>
+            <rdf:li>media</rdf:li>
+            <rdf:li>plate</rdf:li>
+            <rdf:li>spoon</rdf:li>
+          </rdf:Bag>
+        </dc:subject>
+      </cc:Work>
+      <cc:License rdf:about="http://creativecommons.org/licenses/publicdomain/">
+        <cc:permits rdf:resource="http://creativecommons.org/ns#Reproduction"/>
+        <cc:permits rdf:resource="http://creativecommons.org/ns#Distribution"/>
+        <cc:permits rdf:resource="http://creativecommons.org/ns#DerivativeWorks"/>
+      </cc:License>
+    </rdf:RDF>
+  </metadata>
+</svg>
