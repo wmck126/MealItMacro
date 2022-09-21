@@ -1,5 +1,5 @@
 import {useState} from 'react'
-import CreateProfileForm from '../components/CreateProfileForm'
+import CreateProfileForm from '../components/CreateProfile/CreateProfileForm'
 
 function CreateProfile({user, setUser}) {
 

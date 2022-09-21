@@ -7,7 +7,7 @@ function LoginForm({onLogin, setClick}) {
   const [username, setUsername] = useState("")
   const [password, setPassword] = useState("")
   const [errors, setErrors] = useState([])
-  console.log(errors)
+  
   
 
   function handleSubmit(e) {
