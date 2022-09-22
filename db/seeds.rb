@@ -14,3 +14,12 @@ end
 def food_dataset
   api_data = {key: food_api_key}
   food = RestClient.get()
+end
+
+
+
+course1 = Course.create(name: "Lunch")
+
+ingredient1 = Ingredient.create(calories: "700", protein: 20, carbs: 15, fat: 10, name: "bread")
+ingredient2 = Ingredient.create(calories: "300", protein: 30, carbs: 12, fat: 11, name: "peanut butter")
+Meal.create(name: "sandwich", ingredient_id: 1, course_id: 1)
