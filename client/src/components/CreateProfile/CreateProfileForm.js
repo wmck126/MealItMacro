@@ -1,6 +1,7 @@
 import {useEffect, useState} from 'react'
 import {useNavigate} from 'react-router-dom'
 import Slider from '@mui/material/Slider'
+import './CreateProfileForm.css'
 
 function CreateProfileForm({user, setUser}) {
   const navigate = useNavigate()
@@ -16,7 +17,8 @@ function CreateProfileForm({user, setUser}) {
   const [bmi, setBmi] = useState(0)
   const [weightGoal, setWeightGoal] = useState(0)
   const [errors, setErrors] = useState("")
-  const [macroSum, setMacroSum] = useState(0)
+  //const [macroSum, setMacroSum] = useState([])
+  let macroSum = []
   console.log(macroSum)
 
   function handleSubmit(e){
@@ -55,11 +57,35 @@ function CreateProfileForm({user, setUser}) {
     .then(console.log('Redirecting..'))
   }
 
+  //Calculate the sum of macros, ensure they add up to 100
   useEffect(() => {
-    setMacroSum(carbGoal + fatGoal + proteinGoal)
+    macroSum.push(carbGoal + fatGoal + proteinGoal)
   }, [carbGoal, proteinGoal, fatGoal])
   
-  
+  const marks = [
+    {
+      value: 0,
+      label: "Desk job/not active"
+    },
+    {
+      value: 25,
+      label: "Moving around, somewhat active"
+    },
+    {
+      value: 50,
+      label: "Workout 2-3x a week"
+    },
+    {
+      value: 75,
+      label: "Workout most days"
+    },
+    {
+      value: 100,
+      label: "Workout everyday!"
+    }
+
+  ]
+
   return (
   <div id="profileForm" className='container'>
       <form onSubmit={handleSubmit}>
@@ -90,11 +116,11 @@ function CreateProfileForm({user, setUser}) {
           <div className='form-outline mb-4'>
             <label className='form-label'>Activity Levels: </label>
               <Slider
-                aria-label="Temperature"
+                aria-label="Activity"
                 defaultValue={50}
                 valueLabelDisplay="auto"
-                step={10}
-                marks
+                step={5}
+                marks={marks}
                 min={0}
                 max={100}
                 onChange={(e) => setActivityLevel(e.target.value)}

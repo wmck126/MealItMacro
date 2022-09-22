@@ -6,6 +6,8 @@ import { UserContext } from "./components/UserContext";
 import CreateProfile from "./pages/CreateProfile";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
+import Recipes from "./pages/Recipes";
+import UserProfile from "./pages/UserProfile";
 ;
 
 function App() {
@@ -39,7 +41,7 @@ function App() {
 
   return (
     <div>
-      <NavBar onLogout={handleLogout} />
+      <NavBar onLogout={handleLogout} user={user}/>
       <UserContext.Provider value ={user}>
         
           <Routes>
@@ -47,6 +49,8 @@ function App() {
             <Route path="/login" element={<Login onLogin={handleLogin}/>}/>
             <Route path="/signup" element={<SignupForm onLogin={setUser} />}/>
             <Route path="/createProfile" element={<CreateProfile user={user} setUser={setUser}/>}/>
+            <Route path='/userProfile' element={<UserProfile user={user} />} />
+            <Route path='/recipes' element={<Recipes user={user} />} />
           </Routes>
       </UserContext.Provider>
     </div>
