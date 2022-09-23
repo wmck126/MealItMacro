@@ -8,6 +8,7 @@ import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Recipes from "./pages/Recipes";
 import UserProfile from "./pages/UserProfile";
+import WeeklyMealPlan from "./pages/WeeklyMealPlan";
 ;
 
 function App() {
@@ -51,6 +52,7 @@ function App() {
             <Route path="/createProfile" element={<CreateProfile user={user} setUser={setUser}/>}/>
             <Route path='/userProfile' element={<UserProfile user={user} />} />
             <Route path='/recipes' element={<Recipes user={user} />} />
+            <Route path='/weeklyPlan' element={<WeeklyMealPlan user={user}/>} />
           </Routes>
       </UserContext.Provider>
     </div>

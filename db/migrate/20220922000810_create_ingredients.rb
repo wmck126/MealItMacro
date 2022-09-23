@@ -2,11 +2,11 @@ class CreateIngredients < ActiveRecord::Migration[7.0]
   def change
     create_table :ingredients do |t|
 
-      t.string :calories
-      t.integer :protein
-      t.integer :carbs
-      t.integer :fat
-      t.integer :name
+      t.text :calories
+      t.text :protein
+      t.text :carbs
+      t.text :fat
+      t.text :name
       t.timestamps
     end
   end

@@ -14,5 +14,6 @@ class User < ApplicationRecord
   #validates :password, format: PASSWORD_REQUIREMENTS
   ## Some reason password will not allow PATCH requests go through
   has_secure_password
-  has_many :meals
+  has_many :user_meals
+  has_many :meals, through: :user_meals
 end

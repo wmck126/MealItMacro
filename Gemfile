@@ -54,3 +54,5 @@ gem "jwt", "~> 2.5"
 gem  'rest-client'
 
 gem 'dotenv-rails'
+
+gem 'byebug'
