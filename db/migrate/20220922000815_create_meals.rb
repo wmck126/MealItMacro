@@ -3,8 +3,11 @@ class CreateMeals < ActiveRecord::Migration[7.0]
     create_table :meals do |t|
 
       t.string :name
-      t.belongs_to :ingredient, index: true, foreign_key: true
-      t.belongs_to :course, index: true, foreign_key: true
+      t.string :image_url
+      t.string :recipe_url
+      t.int :yield
+      t.float :calories
+      
       t.timestamps
     end
   end

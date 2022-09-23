@@ -10,19 +10,22 @@ require 'byebug'
 puts 'Seeding...'
 
 def food_api_key
-  ENV["FOOD_API_KEY"]
+  ENV["APP_KEY"]
+end
+
+def food_api_id
+  ENV["APP_ID"]
 end
 
 def food_dataset
   api_data = {key: food_api_key}
-  food = RestClient.get("https://api.nal.usda.gov/fdc/v1/foods/search?api_key=#{api_data[:key]}&query=Cheddar%20Cheese")
-  food_array = JSON.parse(food)["foods"].first
-  
+  food = RestClient.get("https://api.edamam.com/api/recipes/v2?type=public&q=chicken&app_id=#{food_api_id}&app_key=#{food_api_key}&diet=low-carb")
+  food_array = JSON.parse(food)["hits"]
   food_array.each do |s|
-    byebug
+    s["recipe"]["ingredients"].each do |s|
     Ingredient.create(
-      name: s["description"], 
-      calories: s["foodNutrients"].detect{|x| x["nutrientId"] = 1008}, 
+      name: s["text"], 
+      calories: s["calories"], 
       protein: s["foodNutrients"].detect{|x| x["nutrientId"] = 1257}, 
       carbs: s["foodNutrients"].detect{|x| x["nutrientId"] = 1005}, 
       fat: s["foodNutrients"].detect{|x| x["nutrientId"] = 1004}
