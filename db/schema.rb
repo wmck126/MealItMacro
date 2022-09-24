@@ -10,18 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_09_23_141541) do
+ActiveRecord::Schema[7.0].define(version: 2022_09_24_141522) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-
-  create_table "course_meals", force: :cascade do |t|
-    t.bigint "course_id"
-    t.bigint "meal_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["course_id"], name: "index_course_meals_on_course_id"
-    t.index ["meal_id"], name: "index_course_meals_on_meal_id"
-  end
 
   create_table "courses", force: :cascade do |t|
     t.string "name"
@@ -29,48 +20,27 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_23_141541) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "ingredients", force: :cascade do |t|
-    t.text "calories"
-    t.text "protein"
-    t.text "carbs"
-    t.text "fat"
-    t.text "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "meals", force: :cascade do |t|
     t.string "name"
-    t.bigint "ingredient_id"
-    t.bigint "course_id"
+    t.string "image_url"
+    t.string "recipe_url"
+    t.integer "yield"
+    t.float "calories"
+    t.string "meal_type"
+    t.string "dish_type"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["course_id"], name: "index_meals_on_course_id"
-    t.index ["ingredient_id"], name: "index_meals_on_ingredient_id"
   end
 
-  create_table "recipe_ingredients", force: :cascade do |t|
-    t.bigint "meal_id"
-    t.bigint "ingredient_id"
+  create_table "total_macros", force: :cascade do |t|
+    t.float "calories"
+    t.float "carbs"
+    t.float "protein"
+    t.float "fat"
+    t.bigint "meal_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["ingredient_id"], name: "index_recipe_ingredients_on_ingredient_id"
-    t.index ["meal_id"], name: "index_recipe_ingredients_on_meal_id"
-  end
-
-  create_table "units", force: :cascade do |t|
-    t.integer "cup"
-    t.integer "tbsp"
-    t.integer "tsp"
-    t.integer "pint"
-    t.integer "quart"
-    t.integer "gallon"
-    t.integer "pound"
-    t.integer "grams"
-    t.integer "ounces"
-    t.integer "item"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.index ["meal_id"], name: "index_total_macros_on_meal_id"
   end
 
   create_table "user_meals", force: :cascade do |t|
@@ -100,12 +70,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_23_141541) do
     t.datetime "updated_at", null: false
   end
 
-  add_foreign_key "course_meals", "courses"
-  add_foreign_key "course_meals", "meals"
-  add_foreign_key "meals", "courses"
-  add_foreign_key "meals", "ingredients"
-  add_foreign_key "recipe_ingredients", "ingredients"
-  add_foreign_key "recipe_ingredients", "meals"
+  add_foreign_key "total_macros", "meals"
   add_foreign_key "user_meals", "meals"
   add_foreign_key "user_meals", "users"
 end

@@ -13,17 +13,36 @@ class MealsController < ApplicationController
     else
       meal = Meal.all
     end
-      render json: meal, include:  [:ingredient, :course]
+      render json: meal
   end
   
   def show
-    meal = Meal.find(params[:id])
+    meal = find_meal()
     render json: meal, status: :ok
+  end
+
+  def serving_calories
+    specific_meal = find_meal()
+    calories = specific_meal["calories"]
+    serving_size = specific_meal["yield"]
+    servCals = calories / serving_size
+    render json: servCals and return
   end
 
   private
 
+  def find_meal
+    Meal.find(params[:id])
+  end
+
   def meal_params
-    params.permit(:name, :ingredient_id, :course_id)
+    params.permit(
+      :name,
+      :image_url,
+      :recipe_url,
+      :yield,
+      :calories,
+      :meal_type,
+      :dish_type,)
   end
 end

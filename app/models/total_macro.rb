@@ -1,0 +1,2 @@
+class TotalMacro < ApplicationRecord
+end

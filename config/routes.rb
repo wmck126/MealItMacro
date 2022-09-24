@@ -13,8 +13,8 @@ Rails.application.routes.draw do
 
   resources :users 
   
-  resources :meals, only: [:index, :show] do
-    resources :courses, only: [:index, :show]
+  resources :meals do
+    get 'serving_calories', on: :member
   end
 
   resources :ingredients, only: [:index, :show]
