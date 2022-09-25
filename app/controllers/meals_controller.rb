@@ -6,21 +6,22 @@ class MealsController < ApplicationController
   end
 
   def index
-    if params[:ingredient_id] || params[:course_id]
-      ingredients = Ingredient.find(params[:ingredient_id])
-      courses = Course.find(params[:course_id])
-      meals = ingredients.meals && courses.meals
-    else
       meal = Meal.all
-    end
       render json: meal
   end
   
+  def macros_index
+    meal = find_meal()
+    macros = meal.total_macros
+    render json: macros, include: :meal
+  end
+
   def show
     meal = find_meal()
     render json: meal, status: :ok
   end
 
+  #Most likely won't need this, macros takes 
   def serving_calories
     specific_meal = find_meal()
     calories = specific_meal["calories"]

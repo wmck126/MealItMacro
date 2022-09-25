@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { BrowserRouter, Routes, Route, redirect,  } from "react-router-dom";
+import { Routes, Route, redirect,  } from "react-router-dom";
 import SignupForm from "./components/Login/SignupForm";
 import NavBar from "./components/NavBar/NavBar";
 import { UserContext } from "./components/UserContext";
@@ -13,7 +13,7 @@ import WeeklyMealPlan from "./pages/WeeklyMealPlan";
 
 function App() {
   const [user, setUser] = useState(null);
-  console.log("This is user: ", user)
+  
 
   useEffect(() => {
     const loggedInUser = localStorage.getItem("user")
@@ -44,7 +44,6 @@ function App() {
     <div>
       <NavBar onLogout={handleLogout} user={user}/>
       <UserContext.Provider value ={user}>
-        
           <Routes>
             <Route path="/" exact element={<Home />}/>
             <Route path="/login" element={<Login onLogin={handleLogin}/>}/>

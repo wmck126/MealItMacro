@@ -26,15 +26,23 @@ def food_dataset
   food = RestClient.get("https://api.edamam.com/api/recipes/v2?type=public&q=any&app_id=#{food_api_id}&app_key=#{food_api_key}&random=true")
   food_array = JSON.parse(food)["hits"]
   
-  food_array.each do |s|
+  food_array.each_with_index do |s, i|
+    serving_yield = s["recipe"]["yield"]
     Meal.create!(
       name: s["recipe"]["label"],
       image_url: s["recipe"]["image"],
       recipe_url: s["recipe"]["url"],
-      yield: s["recipe"]["yield"],
+      yield: serving_yield,
       calories: s["recipe"]["calories"],
       meal_type: s["recipe"]["mealType"],
       dish_type: s["recipe"]["dishType"]
+    )
+    TotalMacro.create!(
+      carbs: (s["recipe"]["totalNutrients"]["CHOCDF"]["quantity"])/(serving_yield),
+      protein: (s["recipe"]["totalNutrients"]["PROCNT"]["quantity"])/(serving_yield),
+      fat: (s["recipe"]["totalNutrients"]["FAT"]["quantity"])/(serving_yield),
+      serving_calories: (s["recipe"]["calories"])/(serving_yield),
+      meal_id: (i + 1)
     )
   end
 end

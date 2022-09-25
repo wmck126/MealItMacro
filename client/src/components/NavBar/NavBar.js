@@ -18,25 +18,28 @@ function NavBar({onLogout, user}) {
   const showLogout = () => {
     if (user){
       return(
-
         <a class="nav-link" id="logoutBttn" onClick={handleLogout}>Logout</a>
-      
       )
     }
     else {
       return(
-
         <a class="nav-link" id="logoutBttn" onClick={() =>navigate('/login')}>Login</a>
       )
     }}
 
-  
+  const showGreeting = () => {
+    if (user){
+      return (
+        <p>Welcome, {user.name}</p>
+      )
+    }
+  }
 
   return (
     <nav class="navbar navbar-light bg-light">
       <div class="container-fluid">
         <a class='navbar-brand'>Mealit</a>
-        <p>Welcome, {user.name}</p>
+        {showGreeting}
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
         </button>

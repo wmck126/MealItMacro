@@ -37,6 +37,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_24_141522) do
     t.float "carbs"
     t.float "protein"
     t.float "fat"
+    t.float "serving_calories"
     t.bigint "meal_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

@@ -10,6 +10,8 @@ function CreateProfileForm({user, setUser}) {
   // const [imageUrl, setImageUrl] = useState("")
   const [weight, setWeight] = useState(0)
   const [height, setHeight] = useState(0)
+  const [feet, setFeet] = useState(0)
+  const [inches, setInches] = useState(0)
   const [carbGoal, setCarbGoal] = useState(0)
   const [proteinGoal, setProteinGoal] = useState(0)
   const [fatGoal, setFatGoal] = useState(0)
@@ -21,9 +23,15 @@ function CreateProfileForm({user, setUser}) {
   let macroSum = []
   console.log(macroSum)
 
+
+  //Need to fix height to inches, giving way too big a number
   function handleSubmit(e){
     e.preventDefault()
-    const inputBMI = ( (weight / (height * height)) * 703)
+    console.log("feet: ", feet)
+    console.log("inches: ", inches)
+    const heightInches = ((feet * 12) + inches)
+    const inputBMI = ( (weight / (heightInches * heightInches)) * 703)
+    console.log("This is height", heightInches)
     console.log("this is BMI", inputBMI)
     fetch(`/users/${id}`, {
       method: "PATCH",
@@ -33,7 +41,7 @@ function CreateProfileForm({user, setUser}) {
       body: JSON.stringify({
         name,
         weight,
-        height,
+        height: heightInches,
         carb_goal: carbGoal, 
         protein_goal: proteinGoal, 
         fat_goal: fatGoal,
@@ -58,9 +66,7 @@ function CreateProfileForm({user, setUser}) {
   }
 
   //Calculate the sum of macros, ensure they add up to 100
-  useEffect(() => {
-    macroSum.push(carbGoal + fatGoal + proteinGoal)
-  }, [carbGoal, proteinGoal, fatGoal])
+  
   
   const marks = [
     {
@@ -93,9 +99,34 @@ function CreateProfileForm({user, setUser}) {
           <label className='form-label'>Name: </label>
             <input type="text" className='form-control' onChange={(e) => setName(e.target.value)}/>
         </div>
-        <div className='form-outline mb-4'>
-          <label className='form-label'>Height: </label>
-            <input className='form-control' type="text" onChange={(e) => setHeight(e.target.value)}/>
+        <div className='form-row'>
+          <div className='col-7'>
+          <label className='form-label'>Height: </label><br/>
+          <select class="custom-select mr-sm-2" id="inlineFormCustomSelect" onChange={(e) => setFeet(e.target.value)}>
+            <option selected>Feet</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+          </select>
+          <select class="custom-select mr-sm-2" id="inlineFormCustomSelect" onChange={(e) => setInches(e.target.value)}>
+            <option selected>Inches</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="7">8</option>
+            <option value="7">9</option>
+            <option value="7">10</option>
+            <option value="7">11</option>
+          </select>
+          </div><br/>
         </div>
         <div className='form-outline mb-4'>
           <label className='form-label'>Weight: </label>
