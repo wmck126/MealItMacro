@@ -13,6 +13,7 @@ import WeeklyMealPlan from "./pages/WeeklyMealPlan";
 
 function App() {
   const [user, setUser] = useState(null);
+  const [userMeals, setUserMeals] = useState([])
   
 
   useEffect(() => {
@@ -39,6 +40,11 @@ function App() {
     setUser(loggedIn)
   }
   
+  function addUserMeals(meals){
+    setUserMeals([...meals])
+    console.log("Added to meals list")
+  }
+
 
   return (
     <div>
@@ -50,8 +56,8 @@ function App() {
             <Route path="/signup" element={<SignupForm onLogin={setUser} />}/>
             <Route path="/createProfile" element={<CreateProfile user={user} setUser={setUser}/>}/>
             <Route path='/userProfile' element={<UserProfile user={user} />} />
-            <Route path='/recipes' element={<Recipes user={user} />} />
-            <Route path='/weeklyPlan' element={<WeeklyMealPlan user={user}/>} />
+            <Route path='/recipes' element={<Recipes user={user} addUserMeals={addUserMeals}/>} />
+            <Route path='/weeklyPlan' element={<WeeklyMealPlan user={user} userMeals={userMeals}/>} />
           </Routes>
       </UserContext.Provider>
     </div>

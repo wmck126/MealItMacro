@@ -2,7 +2,9 @@ import React from 'react'
 
 function WeeklyMealPlan() {
   return (
-    <div>WeeklyMealPlan</div>
+    <div>
+    <h2>User favorites</h2>
+    </div>
   )
 }
 

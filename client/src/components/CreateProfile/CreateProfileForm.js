@@ -20,7 +20,6 @@ function CreateProfileForm({user, setUser}) {
   const [errors, setErrors] = useState("")
   const [gender, setGender] = useState("")
   const [age, setAge] = useState(0)
-  
   const [macroCals, setMacroCals] = useState(0)
   const [macroGrams, setMacroGrams] = useState(0)
   let activeBMR = null

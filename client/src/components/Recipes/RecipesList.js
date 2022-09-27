@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 
 
-export default function RecipesList() {
+export default function RecipesList({user, addUserMeals}) {
 
   const [recipes, setRecipes] = useState([])
 
@@ -10,6 +10,24 @@ export default function RecipesList() {
     .then((r) => r.json())
     .then(setRecipes)
   }, [])
+
+  function handleAddToUserList(e, recipe){
+    
+    e.preventDefault()
+    fetch('/user_meals', {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        user_id: user.id,
+        meal_id: recipe.id
+      })
+  })
+  .then(r => r.json())
+  .then(userMeals => addUserMeals(userMeals))
+  .catch(error => console.error(error))
+}
 
   return (
     <>
@@ -25,7 +43,7 @@ export default function RecipesList() {
             <p>{recipe.dish_type}</p>
             <p>Calories per serving: {servingCalories}</p>
             <a href={recipe.recipe_url} className="btn btn-primary">Recipe link</a>
-            <button className="btn btn-primary">Add to favorites</button>
+            <button className="btn btn-primary" onClick={(e) => handleAddToUserList(e, recipe)}>Add to favorites</button>
             
             </div>
             </div>

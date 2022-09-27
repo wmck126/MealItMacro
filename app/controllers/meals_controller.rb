@@ -21,14 +21,6 @@ class MealsController < ApplicationController
     render json: meal, status: :ok
   end
 
-  #Most likely won't need this, macros takes 
-  def serving_calories
-    specific_meal = find_meal()
-    calories = specific_meal["calories"]
-    serving_size = specific_meal["yield"]
-    servCals = calories / serving_size
-    render json: servCals and return
-  end
 
   private
 
