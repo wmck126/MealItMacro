@@ -3,10 +3,10 @@ import UserProfileHelper from '../components/UserProfile/UserProfileHelper'
 
 function UserProfile({user}) {
   return (
-    <>
+    <div>
     <h1>User Profile</h1>
-    <p>{<UserProfileHelper user={user}/>}</p>
-    </>
+    {<UserProfileHelper user={user}/>}
+    </div>
   )
 }
 

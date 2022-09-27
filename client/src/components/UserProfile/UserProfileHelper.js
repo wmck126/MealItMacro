@@ -2,8 +2,6 @@ import React, { useEffect } from 'react'
 
 function UserProfileHelper({user}) {
 
-  console.log("user: ", user.name)
-
   //Put chart of daily macro expenditure and calorie expenditure
     
   return (
