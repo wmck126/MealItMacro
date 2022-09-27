@@ -49,7 +49,7 @@ console.log("Gender: ", gender)
       calcBMR = (655 + (4.35 * weight) + (4.7 * heightInches) - (4.7 * age))
     }
     console.log("This is calcBMR: ", calcBMR) //GOOD
-    debugger
+    
     //Calc active BMR 
     if (activityLevel === 0){
       activeBMR = (calcBMR * 1.2)
@@ -63,7 +63,7 @@ console.log("Gender: ", gender)
       activeBMR = (calcBMR * 1.9)
     }
     console.log("This is activeBMR: ", activeBMR) //GOOD
-    debugger
+    
     //Goal Calories
     if(weightGoal === "gain"){
       goalCals = (activeBMR + 500)
@@ -73,7 +73,7 @@ console.log("Gender: ", gender)
       goalCals = (activeBMR - 500)
     }
     console.log("This is goalCals: ", goalCals) // GOOD
-    debugger
+    
 
     //Calc macro calories
     ////get percentages of macros
@@ -81,7 +81,6 @@ console.log("Gender: ", gender)
     const fat = parseInt(fatGoal)
     const protein = parseInt(proteinGoal)
     if ((carb + protein + fat) != 100 ){
-      debugger
       return setErrors("All macros must add up to 100!").then(console.log(errors))
     }
     const macroCarbs = (carbGoal/100)
@@ -95,7 +94,7 @@ console.log("Gender: ", gender)
     const carbGrams = Math.round(carbCals / 4)
     const proteinGrams = Math.round(proteinCals / 4)
     const fatGrams = Math.round(fatCals / 9)
-    debugger
+    
 
     fetch(`/users/${id}`, {
       method: "PATCH",
