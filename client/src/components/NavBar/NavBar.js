@@ -5,6 +5,8 @@ import Button from '@mui/material/Button'
 
 
 function NavBar({onLogout, user}) {
+console.log("this is user: ",user)
+  
   const navigate= useNavigate()
   function handleLogout(e) {
     e.preventDefault()
@@ -28,11 +30,9 @@ function NavBar({onLogout, user}) {
     }}
 
   const showGreeting = () => {
-    if (user){
       return (
         <p>Welcome, {user.name}</p>
       )
-    }
   }
 
   return (

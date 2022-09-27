@@ -9,7 +9,6 @@ function CreateProfileForm({user, setUser}) {
   const [name, setName] = useState("")
   // const [imageUrl, setImageUrl] = useState("")
   const [weight, setWeight] = useState(0)
-  const [height, setHeight] = useState(0)
   const [feet, setFeet] = useState(0)
   const [inches, setInches] = useState(0)
   const [carbGoal, setCarbGoal] = useState(0)
@@ -17,11 +16,18 @@ function CreateProfileForm({user, setUser}) {
   const [fatGoal, setFatGoal] = useState(0)
   const [activityLevel, setActivityLevel] = useState(0)  
   const [bmi, setBmi] = useState(0)
-  const [weightGoal, setWeightGoal] = useState(0)
+  const [weightGoal, setWeightGoal] = useState("")
   const [errors, setErrors] = useState("")
-  //const [macroSum, setMacroSum] = useState([])
-  let macroSum = []
-  console.log(macroSum)
+  const [gender, setGender] = useState("")
+  const [age, setAge] = useState(0)
+  
+  const [macroCals, setMacroCals] = useState(0)
+  const [macroGrams, setMacroGrams] = useState(0)
+  let activeBMR = null
+  let calcBMR = null
+  let goalCals = null
+  
+console.log("Gender: ", gender)
 
 
   //Need to fix height to inches, giving way too big a number
@@ -29,10 +35,68 @@ function CreateProfileForm({user, setUser}) {
     e.preventDefault()
     console.log("feet: ", feet)
     console.log("inches: ", inches)
-    const heightInches = ((feet * 12) + inches)
-    const inputBMI = ( (weight / (heightInches * heightInches)) * 703)
+    const feetInch = parseInt(feet * 12)
+    const inch = parseInt(inches)
+    const heightInches = feetInch + inch
+    const inputBMI = Math.round( (weight / (heightInches * heightInches)) * 703)
     console.log("This is height", heightInches)
     console.log("this is BMI", inputBMI)
+    //Calc basic BMR
+    console.log("This is gender: ", gender)
+    if (gender === 'Male'){
+      calcBMR = (66 + (6.23 * weight) + (12.7 * heightInches) - (6.8 * age))
+    } else {
+      calcBMR = (655 + (4.35 * weight) + (4.7 * heightInches) - (4.7 * age))
+    }
+    console.log("This is calcBMR: ", calcBMR) //GOOD
+    debugger
+    //Calc active BMR 
+    if (activityLevel === 0){
+      activeBMR = (calcBMR * 1.2)
+    } else if (activityLevel === 25){
+      activeBMR = (calcBMR * 1.375)
+    } else if (activityLevel === 50){
+      activeBMR = (calcBMR * 1.55)
+    } else if (activityLevel === 75){
+      activeBMR = (calcBMR * 1.725)
+    } else if (activityLevel === 100){
+      activeBMR = (calcBMR * 1.9)
+    }
+    console.log("This is activeBMR: ", activeBMR) //GOOD
+    debugger
+    //Goal Calories
+    if(weightGoal === "gain"){
+      goalCals = (activeBMR + 500)
+    } else if (weightGoal === 'maintain'){
+      goalCals = activeBMR
+    } else if (weightGoal === 'lose'){
+      goalCals = (activeBMR - 500)
+    }
+    console.log("This is goalCals: ", goalCals) // GOOD
+    debugger
+
+    //Calc macro calories
+    ////get percentages of macros
+    const carb = parseInt(carbGoal)
+    const fat = parseInt(fatGoal)
+    const protein = parseInt(proteinGoal)
+    if ((carb + protein + fat) != 100 ){
+      debugger
+      return setErrors("All macros must add up to 100!").then(console.log(errors))
+    }
+    const macroCarbs = (carbGoal/100)
+    const macroProtein = (proteinGoal/100)
+    const macroFat = (fatGoal/100)
+    const carbCals = (goalCals * macroCarbs)
+    const proteinCals = (goalCals * macroProtein)
+    const fatCals = (goalCals * macroFat)
+
+    //Calc macro allowances in grams per day
+    const carbGrams = Math.round(carbCals / 4)
+    const proteinGrams = Math.round(proteinCals / 4)
+    const fatGrams = Math.round(fatCals / 9)
+    debugger
+
     fetch(`/users/${id}`, {
       method: "PATCH",
       headers: {
@@ -48,6 +112,11 @@ function CreateProfileForm({user, setUser}) {
         activity_level: activityLevel,
         weight_goal: weightGoal,
         bmi: inputBMI,
+        gender,
+        goal_cals: goalCals,
+        carb_grams: carbGrams,
+        protein_grams: proteinGrams,
+        fat_grams: fatGrams
       }),
     }).then((r) => {
       if (r.ok) {
@@ -71,11 +140,11 @@ function CreateProfileForm({user, setUser}) {
   const marks = [
     {
       value: 0,
-      label: "Desk job/not active"
+      label: "Little to no activity"
     },
     {
       value: 25,
-      label: "Moving around, somewhat active"
+      label: "Light exercise"
     },
     {
       value: 50,
@@ -99,6 +168,18 @@ function CreateProfileForm({user, setUser}) {
           <label className='form-label'>Name: </label>
             <input type="text" className='form-control' onChange={(e) => setName(e.target.value)}/>
         </div>
+        <div className='form-outline mb-4'>
+          <label className='form-label'>Gender</label>
+          <select class="custom-select mr-sm-2" id="inlineFormCustomSelect" onChange={(e) => setGender(e.target.value)}>
+            <option selected>Select:</option>
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+          </select>
+        </div>
+        <div className='form-outline mb-4'>
+          <label className='form-label'>Age: </label>
+            <input type="text" className='form-control' onChange={(e) => setAge(e.target.value)}/>
+        </div>
         <div className='form-row'>
           <div className='col-7'>
           <label className='form-label'>Height: </label><br/>
@@ -121,10 +202,10 @@ function CreateProfileForm({user, setUser}) {
             <option value="5">5</option>
             <option value="6">6</option>
             <option value="7">7</option>
-            <option value="7">8</option>
-            <option value="7">9</option>
-            <option value="7">10</option>
-            <option value="7">11</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+            <option value="11">11</option>
           </select>
           </div><br/>
         </div>
@@ -150,7 +231,7 @@ function CreateProfileForm({user, setUser}) {
                 aria-label="Activity"
                 defaultValue={50}
                 valueLabelDisplay="auto"
-                step={5}
+                step={25}
                 marks={marks}
                 min={0}
                 max={100}
@@ -158,8 +239,12 @@ function CreateProfileForm({user, setUser}) {
               />
           </div>
           <div className='form-outline mb-4'>
-            <label className='form-label'>What is your goal weight?: </label>
-              <input className='form-control' type="text" onChange={(e) => setWeightGoal(e.target.value)}/>
+            <label className='form-label'>Are you trying to gain, maintain, or lose weight? </label>
+            <select class="custom-select mr-sm-2" id="inlineFormCustomSelect" onChange={(e) => setWeightGoal(e.target.value)}>
+              <option value="gain">Gain</option>
+              <option value="maintain">Maintain</option>
+              <option value="lose">Lose</option>
+            </select>
           </div>
         <button className="btn btn-primary btn-block mb-4" onClick={handleSubmit}>Submit</button>
       </form>

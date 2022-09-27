@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  skip_before_action :authorize, only: [:create, :update]
+  skip_before_action :authorize, only: [:create, :update, :show]
 
   def create
     user = User.create!(user_params)
@@ -43,6 +43,6 @@ class UsersController < ApplicationController
   end
 
   def profile_params
-    params.require(:user).permit(:id, :name, :image_url, :weight, :height, :carb_goal, :protein_goal, :fat_goal, :activity_level, :bmi, :weight_goal)
+    params.require(:user).permit(:id, :username, :name, :weight, :height, :carb_goal, :protein_goal, :fat_goal, :activity_level, :bmi, :weight_goal, :gender, :goal_cals, :carb_grams, :protein_grams, :fat_grams)
   end
 end

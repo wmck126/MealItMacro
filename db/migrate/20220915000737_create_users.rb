@@ -12,8 +12,12 @@ class CreateUsers < ActiveRecord::Migration[7.0]
       t.integer :fat_goal
       t.float :activity_level
       t.float :bmi
-      t.integer :weight_goal
-      t.boolean :is_new
+      t.string :weight_goal #lose, gain, maintain
+      t.string :gender
+      t.integer :goal_cals
+      t.integer :carb_grams
+      t.integer :protein_grams
+      t.integer :fat_grams
       t.timestamps
     end
   end

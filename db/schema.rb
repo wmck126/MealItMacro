@@ -33,7 +33,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_24_141522) do
   end
 
   create_table "total_macros", force: :cascade do |t|
-    t.float "calories"
     t.float "carbs"
     t.float "protein"
     t.float "fat"
@@ -65,8 +64,12 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_24_141522) do
     t.integer "fat_goal"
     t.float "activity_level"
     t.float "bmi"
-    t.integer "weight_goal"
-    t.boolean "is_new"
+    t.string "weight_goal"
+    t.string "gender"
+    t.integer "goal_cals"
+    t.integer "carb_grams"
+    t.integer "protein_grams"
+    t.integer "fat_grams"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
