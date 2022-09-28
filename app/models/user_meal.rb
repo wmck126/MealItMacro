@@ -1,4 +1,4 @@
 class UserMeal < ApplicationRecord
-  belongs_to :users
-  belongs_to :meals
+  belongs_to :user
+  belongs_to :meal
 end

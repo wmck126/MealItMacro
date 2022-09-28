@@ -14,6 +14,7 @@ import WeeklyMealPlan from "./pages/WeeklyMealPlan";
 function App() {
   const [user, setUser] = useState(null);
   const [userMeals, setUserMeals] = useState([])
+  console.log("This is usermeals: ", userMeals)
   
 
   useEffect(() => {
@@ -41,8 +42,7 @@ function App() {
   }
   
   function addUserMeals(meals){
-    setUserMeals([...meals])
-    console.log("Added to meals list")
+    setUserMeals([...userMeals, {meals}])
   }
 
 

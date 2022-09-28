@@ -25,7 +25,10 @@ export default function RecipesList({user, addUserMeals}) {
       })
   })
   .then(r => r.json())
-  .then(userMeals => addUserMeals(userMeals))
+  .then(userMeals => {
+    console.log(userMeals)
+    addUserMeals(userMeals)
+  })
   .catch(error => console.error(error))
 }
 
