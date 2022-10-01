@@ -1,5 +1,5 @@
 class UserMealsController < ApplicationController
-  skip_before_action :authorize
+  
   def create
     user_meal = UserMeal.create!(user_meal_params)
     render json: user_meal, status: :created

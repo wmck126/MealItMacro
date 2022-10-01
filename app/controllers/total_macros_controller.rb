@@ -1,5 +1,5 @@
 class TotalMacrosController < ApplicationController
-  skip_before_action :authorize
+  
   def create
     macros = TotalMacro.create!(macro_params)
     render json: macros, status: :created

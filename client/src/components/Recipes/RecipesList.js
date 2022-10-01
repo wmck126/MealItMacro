@@ -26,18 +26,20 @@ export default function RecipesList({user, addUserMeals}) {
   })
   .then(r => r.json())
   .then(userMeals => {
-    console.log(userMeals)
+    console.log("thisis user meals",userMeals)
     addUserMeals(userMeals)
   })
   .catch(error => console.error(error))
 }
+
+console.log(recipes.map((r) => r.calories))
 
   return (
     <>
     {recipes.map((recipe) => {
       let servingCalories = Math.round((recipe.calories) / (recipe.yield))
       return (
-        <div class="col-sm-2">
+        <div className="col-sm-2">
         <div key={recipe.id} className="card" id="card">
           <img src={recipe.image_url} className="card-img-top" alt="recipe image"/>
           <div className="card-body">
@@ -46,7 +48,7 @@ export default function RecipesList({user, addUserMeals}) {
             <p>{recipe.dish_type}</p>
             <p>Calories per serving: {servingCalories}</p>
             <a href={recipe.recipe_url} className="btn btn-primary">Recipe link</a>
-            <button className="btn btn-primary" onClick={(e) => handleAddToUserList(e, recipe)}>Add to favorites</button>
+            <button className="btn btn-primary" onClick={(e) => (handleAddToUserList(e, recipe))}>Add to favorites</button>
             
             </div>
             </div>

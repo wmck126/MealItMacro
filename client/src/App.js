@@ -14,7 +14,6 @@ import WeeklyMealPlan from "./pages/WeeklyMealPlan";
 function App() {
   const [user, setUser] = useState(null);
   const [userMeals, setUserMeals] = useState([])
-  console.log("This is usermeals: ", userMeals)
   
 
   useEffect(() => {
