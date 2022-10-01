@@ -32,23 +32,16 @@ console.log("Gender: ", gender)
   //Need to fix height to inches, giving way too big a number
   function handleSubmit(e){
     e.preventDefault()
-    console.log("feet: ", feet)
-    console.log("inches: ", inches)
     const feetInch = parseInt(feet * 12)
     const inch = parseInt(inches)
     const heightInches = feetInch + inch
     const inputBMI = Math.round( (weight / (heightInches * heightInches)) * 703)
-    console.log("This is height", heightInches)
-    console.log("this is BMI", inputBMI)
     //Calc basic BMR
-    console.log("This is gender: ", gender)
     if (gender === 'Male'){
       calcBMR = (66 + (6.23 * weight) + (12.7 * heightInches) - (6.8 * age))
     } else {
       calcBMR = (655 + (4.35 * weight) + (4.7 * heightInches) - (4.7 * age))
     }
-    console.log("This is calcBMR: ", calcBMR) //GOOD
-    
     //Calc active BMR 
     if (activityLevel === 0){
       activeBMR = (calcBMR * 1.2)
@@ -61,8 +54,6 @@ console.log("Gender: ", gender)
     } else if (activityLevel === 100){
       activeBMR = (calcBMR * 1.9)
     }
-    console.log("This is activeBMR: ", activeBMR) //GOOD
-    
     //Goal Calories
     if(weightGoal === "gain"){
       goalCals = (activeBMR + 500)
@@ -71,9 +62,6 @@ console.log("Gender: ", gender)
     } else if (weightGoal === 'lose'){
       goalCals = (activeBMR - 500)
     }
-    console.log("This is goalCals: ", goalCals) // GOOD
-    
-
     //Calc macro calories
     ////get percentages of macros
     const carb = parseInt(carbGoal)
@@ -88,13 +76,10 @@ console.log("Gender: ", gender)
     const carbCals = (goalCals * macroCarbs)
     const proteinCals = (goalCals * macroProtein)
     const fatCals = (goalCals * macroFat)
-
-    //Calc macro allowances in grams per day
     const carbGrams = Math.round(carbCals / 4)
     const proteinGrams = Math.round(proteinCals / 4)
     const fatGrams = Math.round(fatCals / 9)
     
-
     fetch(`/users/${id}`, {
       method: "PATCH",
       headers: {

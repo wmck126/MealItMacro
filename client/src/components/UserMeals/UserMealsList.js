@@ -14,10 +14,10 @@ function UserMealsList({user}) {
   
   
   return (
-    <div>
+    <div className="col-sm-2">
     { newUser.meals === undefined ? null 
     : newUser.meals.map((m) => (
-      <div className="col-sm-2">
+      
       <div key={m.id} className="card" id="card">
         <img src={m.image_url} className="card-img-top" alt="m image"/>
         <div className="card-body">
@@ -28,7 +28,7 @@ function UserMealsList({user}) {
           <button className="btn btn-primary" onClick={(e) => e}>Remove from favorites</button>
         </div>
       </div>
-      </div>
+      
     ))}
     </div>
   )

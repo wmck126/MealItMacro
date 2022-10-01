@@ -1,0 +1,29 @@
+input {
+  background-color: transparent;
+  border: 0;  
+  width: 40px;
+  text-align: center;
+  padding: 2px;
+}
+
+input:hover {
+  background-color: #d3d3d3;
+  cursor: pointer;
+}
+
+h2{
+  border: 1px solid black
+}
+
+.macroChart {
+  width: 300px;
+  float: right;
+  border: 1px solid black;
+  margin-right: 25%;
+}
+
+.profList {
+  border: 1px solid black;
+  margin-left: 25%;
+  float: left
+}

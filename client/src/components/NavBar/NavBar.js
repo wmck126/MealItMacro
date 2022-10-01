@@ -1,12 +1,26 @@
-import React from 'react'
+import React, {useState} from 'react'
 import {useNavigate } from 'react-router-dom'
 import './NavBar.css'
-import Button from '@mui/material/Button'
-
+import Box from '@mui/material/Box';
+import Tabs from '@mui/material/Tabs';
+import Tab from '@mui/material/Tab'
+import { Button } from '@mui/material';
+import Menu from '@mui/material/Menu';
+import MenuItem from '@mui/material/MenuItem';
 
 function NavBar({onLogout, user}) {
 
-  const navigate= useNavigate()
+  const navigate = useNavigate()
+  const [tabValue, setTabValue] = useState(0);
+  const [anchorEl, setAnchorEl] = React.useState(null);
+  const open = Boolean(anchorEl);
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
   function handleLogout(e) {
     e.preventDefault()
     fetch("/logout", {method: 'DELETE'})
@@ -27,33 +41,42 @@ function NavBar({onLogout, user}) {
         <a className="nav-link" id="logoutBttn" onClick={() =>navigate('/login')}>Login</a>
       )
     }}
-
-  const showGreeting = () => {
-      return (
-        <p>Welcome, {user.name}</p>
-      )
-  }
+    
+  const handleChange = (event, newValue) => {
+    setTabValue(newValue);
+  };
 
   return (
-    <nav className="navbar navbar-light bg-light">
-      <div className="container-fluid">
-        <a className='navbar-brand'>Mealit</a>
-        
-        <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span className="navbar-toggler-icon"></span>
-        </button>
-          <div className="collapse navbar-collapse" id="navbarNav"><br/>
-          {showGreeting()}
-            <div className="navbar-nav">
-                <a className="nav-link" onClick={() => navigate('/')} >Home</a>
-                <a className="nav-link" onClick={() =>navigate('/recipes')}>Recipes</a>
-                <a className="nav-link" onClick={() =>navigate('/weeklyPlan')}>Weekly Meal Plan</a>
-                <a className="nav-link" onClick={() =>navigate('/userProfile')}>User Profile</a>
-              {showLogout()}
-          </div>
-        </div>
-      </div>
-    </nav>
+    <div>
+    <Box sx={{borderBottom: 1, borderColor: 'divider'}}>
+      <Tabs onChange={handleChange} value={tabValue}>
+        <Tab label="Home" onClick={() => navigate('/')}/>
+        <Tab label="Recipes" onClick={() =>navigate('/recipes')}/>
+        <Tab label="Favorite Meals" onClick={() =>navigate('/weeklyPlan')} />
+      <Button
+        id="menuBttn"
+        aria-controls={open ? 'basic-menu' : undefined}
+        aria-haspopup="true"
+        aria-expanded={open ? 'true' : undefined}
+        onClick={handleClick}>
+          Welcome, {user.name}
+      </Button>
+      <Menu
+        id="basic-menu"
+        anchorEl={anchorEl}
+        open={open}
+        onClose={handleClose}
+        MenuListProps={{
+          'aria-labelledby': 'basic-button',
+        }}
+      >
+        <MenuItem onClick={() => navigate('/userProfile')}>Profile</MenuItem>
+        <MenuItem onClick={handleClose}>My account</MenuItem>
+        <MenuItem onClick={handleLogout}>Logout</MenuItem>
+      </Menu>
+      </Tabs>
+    </Box>
+    </div>
   )
 }
 
