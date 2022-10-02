@@ -6,8 +6,14 @@ h2 {
   text-align: center;
   margin-top: 20px
 }
-button {
-  margin-left: 10px;
+#fav-bttn{
+  margin-left: 10px
+}
+
+#buttons{
+  border: 1px solid black;
+  display: flex;
+  justify-content: center;
 }
 
 h5{
