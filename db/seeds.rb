@@ -17,8 +17,10 @@ def food_api_id
   ENV["APP_ID"]
 end
 
-
+course1 = Course.create(name: "Breakfast")
 course1 = Course.create(name: "Lunch")
+course1 = Course.create(name: "Dinner")
+course1 = Course.create(name: "Snack")
 
 
 def food_dataset

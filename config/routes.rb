@@ -22,6 +22,8 @@ Rails.application.routes.draw do
   resources :ingredients, only: [:index, :show]
   resources :total_macros, only: [:index, :show]
 
+  resources :total_macros
+
   resources :courses, only: [:index, :show] do
     resources :meals, only: [:index, :show]
   end

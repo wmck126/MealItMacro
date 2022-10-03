@@ -20,14 +20,10 @@ function CreateProfileForm({user, setUser}) {
   const [errors, setErrors] = useState("")
   const [gender, setGender] = useState("")
   const [age, setAge] = useState(0)
-  const [macroCals, setMacroCals] = useState(0)
-  const [macroGrams, setMacroGrams] = useState(0)
   let activeBMR = null
   let calcBMR = null
   let goalCals = null
   
-console.log("Gender: ", gender)
-
 
   //Need to fix height to inches, giving way too big a number
   function handleSubmit(e){
@@ -114,11 +110,8 @@ console.log("Gender: ", gender)
       }
     })
     .then(() => navigate("/"))
-    .then(console.log('Redirecting..'))
   }
 
-  //Calculate the sum of macros, ensure they add up to 100
-  
   
   const marks = [
     {

@@ -1,5 +1,5 @@
 class TotalMacrosController < ApplicationController
-  
+  skip_before_action :authorize
   def create
     macros = TotalMacro.create!(macro_params)
     render json: macros, status: :created
@@ -22,7 +22,7 @@ class TotalMacrosController < ApplicationController
 
   private
 
-  def ingredient_params
+  def macro_params
     params.permit(:calories, :carbs, :protein, :fat, :serving_calories)
   end
 end

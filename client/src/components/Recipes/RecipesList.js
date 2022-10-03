@@ -26,13 +26,10 @@ export default function RecipesList({user, addUserMeals}) {
   })
   .then(r => r.json())
   .then(userMeals => {
-    console.log("thisis user meals",userMeals)
     addUserMeals(userMeals)
   })
-  .catch(error => console.error(error))
 }
 
-console.log(recipes.map((r) => r.calories))
 
   return (
     <>
@@ -48,7 +45,7 @@ console.log(recipes.map((r) => r.calories))
         <div key={recipe.meal.id} className="card" id="card">
           <img src={recipe.meal.image_url} className="card-img-top" alt="recipe image"/>
           <div className="card-body">
-          <h5 className="card-title">{recipe.name}</h5>
+          <h5 className="card-title">{recipe.meal.name}</h5>
             <p>{mealType}</p>
             <p>{dishType}</p>
           <ul>
@@ -59,7 +56,7 @@ console.log(recipes.map((r) => r.calories))
           </ul>
           <div id="buttons">
             <a href={recipe.meal.recipe_url} className="btn btn-primary" id="recipe-bttn">Recipe link</a>
-            <button className="btn btn-primary" id="fav-bttn" onClick={(e) => (handleAddToUserList(e, recipe))}>Add to favorites</button>
+            <button id="fav-bttn" onClick={(e) => (handleAddToUserList(e, recipe))}> Add to favorites </button>
             </div>
             </div>
             </div>
