@@ -2,7 +2,8 @@ class TotalMacrosController < ApplicationController
   skip_before_action :authorize
   def create
     macros = TotalMacro.create!(macro_params)
-    render json: macros, status: :created
+    meal = Meal.create!(meal_params)
+    render json: {meal: meal, macros: macros}
   end
 
   def index
@@ -24,5 +25,16 @@ class TotalMacrosController < ApplicationController
 
   def macro_params
     params.permit(:calories, :carbs, :protein, :fat, :serving_calories)
+  end
+
+  def meal_params
+    params.permit(
+      :name,
+      :image_url,
+      :recipe_url,
+      :yield,
+      :calories,
+      :meal_type,
+      :dish_type,)
   end
 end

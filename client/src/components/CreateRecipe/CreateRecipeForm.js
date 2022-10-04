@@ -20,22 +20,21 @@ function CreateRecipeForm() {
 
 
   function handleSubmit(e) {
-    e.preventDefault()
-    fetch ("/meals", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        name,
-        recipe_url: recipeUrl,
-        yield: yields,
-        meal_type: mealType,
-        dish_type: dishType
-      })
-    })
+    // fetch ("/meals", {
+    //   method: "POST",
+    //   headers: {
+    //     "Content-Type": "application/json",
+    //   },
+    //   body: JSON.stringify({
+    //     name,
+    //     recipe_url: recipeUrl,
+    //     yield: yields,
+    //     meal_type: mealType,
+    //     dish_type: dishType
+    //   })
+    // })
 
-    .then(fetch("/total_macros", {
+    fetch("/total_macros", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -45,9 +44,14 @@ function CreateRecipeForm() {
         protein,
         fat,
         serving_calories: servingCals,
+        name,
+        recipe_url: recipeUrl,
+        yield: yields,
+        meal_type: mealType,
+        dish_type: dishType
     })
   })
-  )
+  
     .then((r) => {
       if (r.ok){
         r.json()
