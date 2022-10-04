@@ -1,9 +1,14 @@
 class MealsController < ApplicationController
   skip_before_action :authorize
   def create
-    meal = Meal.create!(meal_params)
+    meal = Meal.new(meal_params)
+    meal.id = Meal.last.id + 1
+    meal.save
     render json: meal, status: :created
   end
+
+  
+
 
   def index
       meal = Meal.all

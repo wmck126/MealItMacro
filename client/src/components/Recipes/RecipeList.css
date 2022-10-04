@@ -7,15 +7,51 @@ h2 {
   margin-top: 20px
 }
 #fav-bttn{
-  margin-left: 10px
+  margin-left: 10px;
+  border: unset;
+  background-color: transparent;
+  cursor: pointer;
+  outline: 0;
+  font-size: 25px;
+  float: right;
+  position: absolute;
+  right: 0px;
+  top: 0px;
+  z-index: 1000;
+  list-style-type: none;
+  border-radius: 5px;
+  text-align: center;
 }
 
-#buttons{
-  border: 1px solid black;
+
+#recipe-bttn{
   display: flex;
   justify-content: center;
+  background-color: antiquewhite;
+}
+
+#recipe-bttn:hover {
+  background-color: lightgrey;
 }
 
 h5{
   text-align: center;
+}
+
+#sortBy {
+  width: 200px;
+  margin-left: 30px
+}
+
+#sortAddBttn{
+  display: flex;
+}
+
+#addRecipeBttn{
+  margin-left: 10px;
+}
+
+#mealtype{
+  display: flex;
+  border: 1px solid black;
 }

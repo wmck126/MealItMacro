@@ -1,8 +1,13 @@
 class TotalMacrosController < ApplicationController
   skip_before_action :authorize
   def create
-    macros = TotalMacro.create!(macro_params)
-    meal = Meal.create!(meal_params)
+    byebug
+    meal = Meal.new(meal_params)
+    meal.id = Meal.last.id + 1
+    meal.save
+    macros = TotalMacro.new(macro_params)
+    macros.meal_id = meal.id
+    macros.save
     render json: {meal: meal, macros: macros}
   end
 

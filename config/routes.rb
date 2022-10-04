@@ -16,17 +16,13 @@ Rails.application.routes.draw do
   resources :users 
   
   resources :meals do
+    get 'meal_counter', :on => :collection
     resources :total_macros, only: [:index, :show]
   end
 
-  resources :ingredients, only: [:index, :show]
   resources :total_macros, only: [:index, :show]
 
   resources :total_macros
-
-  resources :courses, only: [:index, :show] do
-    resources :meals, only: [:index, :show]
-  end
 
   
 

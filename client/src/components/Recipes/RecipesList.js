@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 
 
-export default function RecipesList({user, addUserMeals}) {
+export default function RecipesList({user, addUserMeals, sort}) {
 
   const [recipes, setRecipes] = useState([])
 
@@ -31,9 +31,56 @@ export default function RecipesList({user, addUserMeals}) {
 }
 
 
+function handleSort() {
+  if (sort === "Calories") {
+    const sortedData = [...recipes].sort((a, b) => {
+      return (a.meal.calories / a.meal.yield) > (b.meal.calories / b.meal.yield) ? 1 : -1
+    })
+  setRecipes(sortedData)
+  } else if (sort === "Sort by:") {
+    const sortedData = [...recipes].sort((a, b) => {
+      return a.id > b.id ? 1 : -1
+    })
+  setRecipes(sortedData)
+  } else if (sort === "Protein"){
+  const sortedData = [...recipes].sort((a, b) => {
+    return a.protein > b.protein ? 1 : -1
+  })
+  setRecipes(sortedData)
+  } else if (sort === "Carbs"){
+    const sortedData = [...recipes].sort((a, b) => {
+      return a.carbs > b.carbs ? 1 : -1
+    })
+  setRecipes(sortedData)
+  } else if (sort === "Fat"){
+    const sortedData = [...recipes].sort((a, b) => {
+      return a.fat > b.fat ? 1 : -1
+    })
+  setRecipes(sortedData)
+  }
+}
+
+useEffect(() => {
+  if (sort === "Calories" || "Carbs" || "Protein" || "Fat" || "Sort by:") {
+    handleSort()
+    console.log("Sorting")
+  } 
+}, [sort])
+  
+
+function clicked(count) {
+  if (count > 0) {
+    return "❤️"
+  } else {
+    return "🤍"
+  }
+}
+
+
   return (
     <>
     {recipes.map((recipe) => {
+      let counter = 0
       let servingCalories = Math.round((recipe.meal.calories) / (recipe.meal.yield))
       let dishType = recipe.meal.dish_type.replace(/[\[\]"]+/g, '')
       let mealType = recipe.meal.meal_type.replace(/[\[\]"]+/g, '')
@@ -54,9 +101,14 @@ export default function RecipesList({user, addUserMeals}) {
             <li>Carbs: {carbs}g</li>
             <li>Fat: {fat}</li>
           </ul>
-          <div id="buttons">
-            <a href={recipe.meal.recipe_url} className="btn btn-primary" id="recipe-bttn">Recipe link</a>
-            <button id="fav-bttn" onClick={(e) => (handleAddToUserList(e, recipe))}> Add to favorites </button>
+          <div>
+            <a href={recipe.meal.recipe_url} className="btn btn-item" id="recipe-bttn">Recipe link</a>
+            <li id="fav-bttn" 
+              onClick={(e) => {
+                counter+=1
+                console.log(counter)
+                handleAddToUserList(e, recipe)
+              }}><span>{clicked(counter)}</span></li>
             </div>
             </div>
             </div>

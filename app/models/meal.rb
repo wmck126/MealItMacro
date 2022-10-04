@@ -7,4 +7,9 @@ class Meal < ApplicationRecord
   
   has_many :user_meals
   has_many :users, through: :user_meals
+
+  def self.meal_count
+    count = self.count
+    count
+  end
 end

@@ -2,6 +2,7 @@ import React, {useState} from 'react'
 import { Form } from 'react-bootstrap'
 import { Modal } from 'react-bootstrap'
 import {Button} from 'react-bootstrap'
+import '../Recipes/RecipeList.css'
 
 function CreateRecipeForm() {
   const [name, setName] = useState("")
@@ -16,7 +17,6 @@ function CreateRecipeForm() {
   const [servingCals, setServingCals] = useState(0)
   const [errors, setErrors] = useState("")
   const [show, setShow] = useState(false)
-  console.log(name)
 
 
   function handleSubmit(e) {
@@ -30,7 +30,11 @@ function CreateRecipeForm() {
     //     recipe_url: recipeUrl,
     //     yield: yields,
     //     meal_type: mealType,
-    //     dish_type: dishType
+    //     dish_type: dishType,
+    //     carbs,
+    //     protein,
+    //     fat,
+    //     serving_calories: servingCals
     //   })
     // })
 
@@ -40,15 +44,15 @@ function CreateRecipeForm() {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        carbs,
-        protein,
-        fat,
-        serving_calories: servingCals,
         name,
         recipe_url: recipeUrl,
         yield: yields,
         meal_type: mealType,
-        dish_type: dishType
+        dish_type: dishType,
+        carbs,
+        protein,
+        fat,
+        serving_calories: servingCals
     })
   })
   
@@ -69,7 +73,7 @@ function CreateRecipeForm() {
 
   return (
     <>
-      <Button variant="light" onClick={handleOpen}>Add a recipe +</Button>
+      <Button variant="light" onClick={handleOpen} id="addRecipeBttn">Add a recipe +</Button>
 
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>

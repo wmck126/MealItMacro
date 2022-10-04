@@ -36,9 +36,9 @@ function UserProfileHelper({user}) {
       <li> Weight: <input value={user.weight}></input> lbs</li>
       <li> BMI: {user.bmi} </li>
       <li> Goal Calories: {user.goal_cals} KCal</li>
-      <li> Protein goal: <input value={user.protein_goal}></input>%, {user.protein_grams}g</li>
-      <li> Fat goal: <input value={user.fat_goal}></input>%, {user.fat_grams}g</li>
-      <li> Carbs goal: <input value={user.carb_goal}></input>%, {user.carb_grams}g</li>
+      <li> Protein goal: <input value={user.protein_goal} id="macroInput"></input>%, {user.protein_grams}g</li>
+      <li> Fat goal: <input value={user.fat_goal} id="macroInput"></input>%, {user.fat_grams}g</li>
+      <li> Carbs goal: <input value={user.carb_goal} id="macroInput"></input>%, {user.carb_grams}g</li>
     </ul>
       <div className="macroChart">
         <Pie data={data}/>

@@ -55,7 +55,7 @@ def food_dataset
   api_data = {key: food_api_key}
   breakfast = RestClient.get("https://api.edamam.com/api/recipes/v2?type=public&q=random&app_id=#{food_api_id}&app_key=#{food_api_key}&mealType=Breakfast&dishType=Main%20course")
   lunch = RestClient.get("https://api.edamam.com/api/recipes/v2?type=public&q=random&app_id=#{food_api_id}&app_key=#{food_api_key}&mealType=Lunch&dishType=Main%20course")
-  dinner = RestClient.get("https://api.edamam.com/api/recipes/v2?type=public&q=random&app_id=#{food_api_id}&app_key=#{food_api_key}&mealType=Dinner&dishType=Main%20course")
+  dinner = RestClient.get("https://api.edamam.com/api/recipes/v2?type=public&q=any&app_id=#{food_api_id}&app_key=#{food_api_key}&mealType=Dinner&dishType=Main%20course")
   dessert = RestClient.get("https://api.edamam.com/api/recipes/v2?type=public&q=random&app_id=#{food_api_id}&app_key=#{food_api_key}&dishType=Desserts")
   @breakfast_array = JSON.parse(breakfast)["hits"]
   @dinner_array = JSON.parse(dinner)["hits"]
