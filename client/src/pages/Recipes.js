@@ -5,8 +5,7 @@ import CreateRecipeForm from '../components/CreateRecipe/CreateRecipeForm'
 import { Form } from 'react-bootstrap'
 
 
-function Recipes({user, addUserMeals}) {
-  
+function Recipes({user, addUserMeals, recipes, setRecipes}) {
   const [options, setOptions] = useState("")
   console.log(options)
   
@@ -26,7 +25,7 @@ function Recipes({user, addUserMeals}) {
       
     </div>
     <div className="row row-cols-1 row-cols-md-6 g-5" id="card-group">
-    {<RecipesList user={user} addUserMeals={addUserMeals} sort={options}/>}
+    {<RecipesList user={user} addUserMeals={addUserMeals} sort={options} recipes={recipes} setRecipes={setRecipes}/>}
     </div>
     </>
   )

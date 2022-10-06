@@ -1,14 +1,15 @@
 import React, { useEffect, useState } from 'react'
 
 
-export default function RecipesList({user, addUserMeals, sort}) {
+export default function RecipesList({user, addUserMeals, sort, recipes, setRecipes}) {
 
-  const [recipes, setRecipes] = useState([])
 
   useEffect(() => {
     fetch("/total_macros")
     .then((r) => r.json())
-    .then(setRecipes)
+    .then(console.log("Before set: ", recipes))
+    .then((r) => setRecipes(r))
+    .then(console.log("after set: ", recipes))
   }, [])
 
   function handleAddToUserList(e, recipe){

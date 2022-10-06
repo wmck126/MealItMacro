@@ -1,3 +1,4 @@
+import { ClassNames } from "@emotion/react";
 import { useEffect, useState } from "react";
 import { Routes, Route, redirect,  } from "react-router-dom";
 import SignupForm from "./components/Login/SignupForm";
@@ -7,15 +8,17 @@ import CreateProfile from "./pages/CreateProfile";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Recipes from "./pages/Recipes";
-import RecipeSearch from "./pages/RecipeSearch";
 import UserProfile from "./pages/UserProfile";
 import WeeklyMealPlan from "./pages/WeeklyMealPlan";
-;
+import _ from "lodash";
+
 
 function App() {
   const [user, setUser] = useState(null);
   const [userMeals, setUserMeals] = useState([])
-  console.log("This is user", user)
+  const [recipes, setRecipes] = useState([])
+  const [query, setQuery] = useState("")
+
 
   useEffect(() => {
     const loggedInUser = localStorage.getItem("user")
@@ -25,7 +28,6 @@ function App() {
     }
     else {
       const foundUser = JSON.parse(loggedInUser)
-      console.log(foundUser)
       setUser(foundUser)
       redirect("/")
     }
@@ -45,10 +47,25 @@ function App() {
     setUserMeals([...userMeals, {meals}])
   }
 
+  const filterMeals =() => {
+    recipes.filter(x => x.meal.name.toLowerCase().includes(query.toLowerCase()))
+  }
+
+  const mealsToDisplay = query ? recipes.filter((recipe) => recipe.meal.name.toLowerCase().includes(query.toLowerCase())) : recipes
+
+
+  console.log("This is query:", )
+
+  // function showRecipeFilter() {
+    
+  //   console.log("This is search:", search)
+  // }
+
+  
 
   return (
     <div>
-      <NavBar onLogout={handleLogout} user={user}/>
+      <NavBar onLogout={handleLogout} user={user}  query={query} setQuery={setQuery} filter={filterMeals}/>
       <UserContext.Provider value ={user}>
           <Routes>
             <Route path="/" exact element={<Home />}/>
@@ -56,8 +73,7 @@ function App() {
             <Route path="/signup" element={<SignupForm onLogin={setUser} />}/>
             <Route path="/createProfile" element={<CreateProfile user={user} setUser={setUser}/>}/>
             <Route path='/userProfile' element={<UserProfile user={user} />} />
-            <Route path='/recipes' element={<Recipes user={user} addUserMeals={addUserMeals}/>} />
-            <Route path='/recipequery' element={<RecipeSearch />} />
+            <Route path='/recipes' element={<Recipes user={user} addUserMeals={addUserMeals} recipes={mealsToDisplay} setRecipes={setRecipes}/>} />
             <Route path='/weeklyPlan' element={<WeeklyMealPlan user={user} userMeals={userMeals}/>} />
           </Routes>
       </UserContext.Provider>

@@ -8,13 +8,13 @@ import { Button } from '@mui/material';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import {TextField} from '@mui/material';
+import Search from './Search.js'
 
-function NavBar({onLogout, user}) {
+function NavBar({filter, onLogout, user, recipes, setRecipes, query, setQuery}) {
 
   const navigate = useNavigate()
   const [tabValue, setTabValue] = useState(0);
   const [anchorEl, setAnchorEl] = useState(null);
-  const [query, setQuery] = useState("")
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -48,12 +48,6 @@ function NavBar({onLogout, user}) {
     setTabValue(newValue);
   };
 
-  function handleSubmit(e) {
-    e.preventDefault()
-
-    navigate("/recipequery")
-  }
-
   return (
     <div>
     <Box sx={{borderBottom: 1, borderColor: 'divider'}}>
@@ -83,16 +77,7 @@ function NavBar({onLogout, user}) {
         <MenuItem onClick={handleLogout}>Logout</MenuItem>
         
       </Menu>
-      <Box
-      component="form"
-      sx={{
-        '& > :not(style)': { m: 1, width: '25ch' },
-      }}
-      noValidate
-      autoComplete="off"
-    >
-      <TextField id="standard-basic" label="Search Recipes" variant="standard" onChange={(e) => setQuery(e.target.value)} onSubmit={handleSubmit}/>
-      </Box>
+        <Search filter={filter} recipes={setRecipes} setRecipes={setRecipes} query={query} setQuery={setQuery}/>
       </Tabs>
     </Box>
     </div>
