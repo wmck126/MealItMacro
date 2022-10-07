@@ -11,6 +11,7 @@ import Recipes from "./pages/Recipes";
 import UserProfile from "./pages/UserProfile";
 import WeeklyMealPlan from "./pages/WeeklyMealPlan";
 import _ from "lodash";
+import './App.css'
 
 
 function App() {

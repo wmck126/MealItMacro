@@ -36,8 +36,10 @@ function LoginForm({onLogin, setClick}) {
     
     
   return (
+    <div id="loginLayout">
     <div id="loginForm" className='container'>
-      <h1 id="loginTitle">Login</h1>
+      <h1 id="logo">Mealit</h1>
+      <h2 id="loginTitle">Login</h2>
     <form onSubmit={handleSubmit}>
       <div className='form-outline mb-4'>
         <label className='form-label'>
@@ -55,7 +57,8 @@ function LoginForm({onLogin, setClick}) {
     
     <p>No Login? </p>
     <p onClick={() => setClick(true)} id="onClick">Sign up!</p> 
-    
+    </div>
+    <img src="https://images.unsplash.com/photo-1576021182211-9ea8dced3690" id="loginPic" alt="recipe" />
     </div>
   )
   }
