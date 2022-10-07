@@ -7,7 +7,6 @@ import { Form } from 'react-bootstrap'
 
 function Recipes({user, addUserMeals, recipes, setRecipes}) {
   const [options, setOptions] = useState("")
-  console.log(options)
   
 
   return (

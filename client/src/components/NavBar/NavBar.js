@@ -7,10 +7,9 @@ import Tab from '@mui/material/Tab'
 import { Button } from '@mui/material';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
-import {TextField} from '@mui/material';
 import Search from './Search.js'
 
-function NavBar({filter, onLogout, user, recipes, setRecipes, query, setQuery}) {
+function NavBar({filter, onLogout, user, setRecipes, query, setQuery}) {
 
   const navigate = useNavigate()
   const [tabValue, setTabValue] = useState(0);

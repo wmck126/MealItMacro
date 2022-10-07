@@ -55,12 +55,6 @@ function App() {
   const mealsToDisplay = query ? recipes.filter((recipe) => recipe.meal.name.toLowerCase().includes(query.toLowerCase())) : recipes
 
 
-  console.log("This is query:", )
-
-  // function showRecipeFilter() {
-    
-  //   console.log("This is search:", search)
-  // }
 
   
 

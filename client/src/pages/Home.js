@@ -4,7 +4,6 @@ import { UserContext } from '../components/UserContext'
 function Home() {
 
   const user = useContext(UserContext)
-  console.log(user)
 
   return (
     <div>

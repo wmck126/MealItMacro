@@ -7,9 +7,7 @@ export default function RecipesList({user, addUserMeals, sort, recipes, setRecip
   useEffect(() => {
     fetch("/total_macros")
     .then((r) => r.json())
-    .then(console.log("Before set: ", recipes))
     .then((r) => setRecipes(r))
-    .then(console.log("after set: ", recipes))
   }, [])
 
   function handleAddToUserList(e, recipe){
@@ -64,7 +62,6 @@ function handleSort() {
 useEffect(() => {
   if (sort === "Calories" || "Carbs" || "Protein" || "Fat" || "Sort by:") {
     handleSort()
-    console.log("Sorting")
   } 
 }, [sort])
   

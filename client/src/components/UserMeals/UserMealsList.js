@@ -8,9 +8,7 @@ function UserMealsList({user}) {
     fetch(`/users/${user.id}`)
     .then(r => r.json())
     .then(user => setNewUser(user))
-    .catch(error => console.error(error))
   }, [])
-  console.log(newUser)
   
   
   return (

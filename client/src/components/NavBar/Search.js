@@ -1,11 +1,8 @@
-import React, {useState} from 'react'
+import React from 'react'
 import Box from '@mui/material/Box';
 import {TextField} from '@mui/material';
 
-function Search({recipes, setRecipes, query, setQuery, filter}) {
-
-
-  console.log(query)
+function Search({setQuery, filter}) {
 
   
 
