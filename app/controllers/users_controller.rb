@@ -1,6 +1,5 @@
 class UsersController < ApplicationController
-  before_action :authorize, only: [:index]
-
+skip_before_action :authorize, only: [:create, :update]
   def create
     user = User.create!(user_params)
     render json: user, status: :created

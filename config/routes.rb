@@ -4,6 +4,7 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "articles#index"
+  resources :users 
   post "/signup", to: "users#create"
   get "/me", to: "users#show"
   patch "/createProfile", to: "users#update"
@@ -13,7 +14,7 @@ Rails.application.routes.draw do
 
   resources :user_meals, only: [:index, :show, :create]
 
-  resources :users 
+  
   
   resources :meals do
     resources :total_macros, only: [:index, :show]

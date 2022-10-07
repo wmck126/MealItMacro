@@ -1,6 +1,5 @@
 import {useState} from 'react'
 import {redirect} from "react-router-dom";
-import Alert from '@mui/material/Alert'
 import './Login.css'
 
 function LoginForm({onLogin, setClick}) {
@@ -53,7 +52,7 @@ function LoginForm({onLogin, setClick}) {
       </div>
       <button onClick={handleSubmit} className="btn btn-primary btn-block mb-4">Submit</button>
     </form>
-    {(errors.length === 0) ? null : <Alert severity="error">{errors}</Alert>}
+    <p style={{color: 'red'}}>{errors}</p>
     
     <p>No Login? </p>
     <p onClick={() => setClick(true)} id="onClick">Sign up!</p> 
