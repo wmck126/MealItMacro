@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-skip_before_action :authorize, only: [:create, :update]
+skip_before_action :authorize, only: [:create, :update, :show, :delete]
   def create
     user = User.create!(user_params)
     render json: user, status: :created
@@ -23,6 +23,12 @@ skip_before_action :authorize, only: [:create, :update]
     else 
       render json: {error: "User not found"}, status: :not_found
     end
+  end
+
+  def destroy
+    user = User.find_by(id: params[:id])
+    user.delete
+    head :no_content
   end
 
 

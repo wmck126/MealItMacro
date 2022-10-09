@@ -1,4 +1,4 @@
-import {useEffect, useState} from 'react'
+import {useState} from 'react'
 import {useNavigate } from 'react-router-dom'
 import './Signup.css'
 
@@ -8,6 +8,7 @@ function SignupForm({onLogin, setClick}) {
   const [password, setPassword] = useState("")
   const [passwordConf, setPasswordConf] = useState("")
   const [errors, setErrors] = useState("")
+  const [loading, setLoading] = useState(false)
   const validUsername = /^.{5,}/
   const password6chars = /^.{6,}/
   const password1num = /^.*\d/
@@ -71,7 +72,11 @@ function SignupForm({onLogin, setClick}) {
           </label>
         </div>
 
-        <button onClick={handleSubmit} className="btn btn-primary btn-block mb-4">Submit</button>
+        <button onClick={() => {handleSubmit(); setLoading(true)}} className="btn btn-primary btn-block mb-4">
+          {loading  ? <div class="spinner-border" role="status">
+                      <span class="visually-hidden">Loading...</span>
+                      </div>
+                    : "Submit"}</button>
       </form>
       <p style={{color: 'red'}}>{errors}</p>
       <p>Have an account?</p>

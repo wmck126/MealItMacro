@@ -5,7 +5,7 @@ import SignupForm from "./components/Login/SignupForm";
 import NavBar from "./components/NavBar/NavBar";
 import { UserContext } from "./components/UserContext";
 import CreateProfile from "./pages/CreateProfile";
-import Home from "./pages/Home";
+import Home from "./pages/Home/Home";
 import Login from "./pages/Login";
 import Recipes from "./pages/Recipes";
 import UserProfile from "./pages/UserProfile";
@@ -23,6 +23,7 @@ function App() {
 
   useEffect(() => {
     const loggedInUser = localStorage.getItem("user")
+    console.log('This is logged in user: ', loggedInUser)
     const redirection = () => redirect("/login")
     if(!loggedInUser){
       return redirection
@@ -60,7 +61,7 @@ function App() {
 
   return (
     <div>
-      <NavBar onLogout={handleLogout} user={user}  query={query} setQuery={setQuery} filter={filterMeals}/>
+      {user.name === null ? null : <NavBar onLogout={handleLogout} user={user}  query={query} setQuery={setQuery} filter={filterMeals}/> }
       <UserContext.Provider value ={user}>
           <Routes>
             <Route path="/" exact element={<Home />}/>

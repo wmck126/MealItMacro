@@ -22,3 +22,15 @@ input:hover {
   margin-left: 25%;
   float: left
 }
+
+#weightInput{
+  background-color: transparent;
+  border: 0;  
+  width: 40px;
+  text-align: center;
+  padding: 2px
+}
+
+#deleteAccount {
+  margin-top: 50px;
+}

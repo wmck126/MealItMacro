@@ -4,7 +4,10 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "articles#index"
-  resources :users 
+  resources :users do
+    resources :user_meals
+  end
+  
   post "/signup", to: "users#create"
   get "/me", to: "users#show"
   patch "/createProfile", to: "users#update"
@@ -12,7 +15,7 @@ Rails.application.routes.draw do
   post "/login", to: "sessions#create"
   delete "logout", to: "sessions#destroy"
 
-  resources :user_meals, only: [:index, :show, :create]
+  resources :user_meals
 
   
   

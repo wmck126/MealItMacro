@@ -1,3 +1,72 @@
 #title {
   text-align: center;
+  margin-bottom: 50px;
+}
+#gender{
+  display: flex;
+  flex-direction: column;
+}
+#genderBttn{
+  margin-left: 10px;
+}
+#name {
+  width: 300px
+}
+
+#age {
+  width: 300px
+}
+
+#weight {
+  width: 300px
+}
+
+#carb {
+  width: 300px
+}
+
+#fat {
+  width: 300px
+}
+
+#protein {
+  width: 300px
+}
+
+#macroGoals {
+  display: flex;
+  flex-direction: column;
+  margin-right: 8em;
+  width: 25em;
+  height: 450px;
+  float: right;
+}
+
+#weightGoal {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#weightGoalBttn {
+  margin-left: 10px;
+  text-align: center;
+  width: 5em
+  
+}
+
+#basicInfoContainer {
+  width: 20em;
+  margin-left: 18em;
+  height: 450px;
+  float: left;
+}
+#activityLevelContainer{
+  text-align: center;
+}
+
+#submitBttn{
+  margin-left: 18em;
 }

@@ -1,5 +1,5 @@
 class UserMealsController < ApplicationController
-  before_action :authorize, only: [:show, :index]
+  skip_before_action :authorize
   def create
     user_meal = UserMeal.create!(user_meal_params)
     render json: user_meal, status: :created
@@ -14,6 +14,7 @@ class UserMealsController < ApplicationController
     user = UserMeal.find_by(id: session[:user_id])
     render json: user, status: :ok
   end
+
 
   private
 

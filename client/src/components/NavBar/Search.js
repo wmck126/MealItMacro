@@ -1,6 +1,7 @@
 import React from 'react'
 import Box from '@mui/material/Box';
 import {TextField} from '@mui/material';
+import "./NavBar.css"
 
 function Search({setQuery, filter}) {
 
@@ -14,6 +15,7 @@ function Search({setQuery, filter}) {
       }}
       noValidate
       autoComplete="off"
+      id="search"
     >
       <TextField id="standard-basic" label="Search Recipes" variant="standard" onChange={(e) => {
         filter()

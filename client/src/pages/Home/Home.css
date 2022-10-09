@@ -1,0 +1,22 @@
+#title {
+  text-align: center;
+  margin-top: 50px;
+}
+
+#subTitle{
+  margin-bottom: 40px;
+}
+
+#macroList {
+  display: flex;
+  flex-direction: row;
+  gap: 50px;
+  list-style-type: none;
+  justify-content: center;
+}
+
+#userGreeting{
+  display: flex;
+  flex-direction: column;
+  gap: 15px
+}

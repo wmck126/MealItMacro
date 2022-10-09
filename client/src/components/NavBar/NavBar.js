@@ -30,18 +30,6 @@ function NavBar({filter, onLogout, user, setRecipes, query, setQuery}) {
       localStorage.removeItem("user")
     })
   }
-
-  const showLogout = () => {
-    if (user){
-      return(
-        <a className="nav-link" id="logoutBttn" onClick={handleLogout}>Logout</a>
-      )
-    }
-    else {
-      return(
-        <a className="nav-link" id="logoutBttn" onClick={() =>navigate('/login')}>Login</a>
-      )
-    }}
     
   const handleChange = (event, newValue) => {
     setTabValue(newValue);
@@ -72,7 +60,6 @@ function NavBar({filter, onLogout, user, setRecipes, query, setQuery}) {
         }}
       >
         <MenuItem onClick={() => navigate('/userProfile')}>Profile</MenuItem>
-        {/* <MenuItem onClick={handleClose}>My account</MenuItem> */}
         <MenuItem onClick={handleLogout}>Logout</MenuItem>
         
       </Menu>

@@ -140,24 +140,27 @@ function CreateProfileForm({user, setUser}) {
   return (
   <div id="profileForm" className='container'>
       <form onSubmit={handleSubmit}>
-        <div className='form-outline mb-4'>
+        <div id="basicInfoContainer">
+        <div className='form-outline mb-4' id="name">
           <label className='form-label'>Name: </label>
             <input type="text" className='form-control' onChange={(e) => setName(e.target.value)}/>
         </div>
-        <div className='form-outline mb-4'>
+        <div id="gender">
+        <div className='form-outline mb-4' >
           <label className='form-label'>Gender</label>
-          <select class="custom-select mr-sm-2" id="inlineFormCustomSelect" onChange={(e) => setGender(e.target.value)}>
+          <select class="custom-select mr-sm-2" id="genderBttn" onChange={(e) => setGender(e.target.value)}>
             <option selected>Select:</option>
             <option value="Male">Male</option>
             <option value="Female">Female</option>
           </select>
         </div>
-        <div className='form-outline mb-4'>
+        </div>
+        <div className='form-outline mb-4' id="age">
           <label className='form-label'>Age: </label>
             <input type="text" className='form-control' onChange={(e) => setAge(e.target.value)}/>
         </div>
         <div className='form-row'>
-          <div className='col-7'>
+          <div className='col-7' id="height">
           <label className='form-label'>Height: </label><br/>
           <select class="custom-select mr-sm-2" id="inlineFormCustomSelect" onChange={(e) => setFeet(e.target.value)}>
             <option selected>Feet</option>
@@ -185,22 +188,27 @@ function CreateProfileForm({user, setUser}) {
           </select>
           </div><br/>
         </div>
-        <div className='form-outline mb-4'>
+        </div>
+        <div id="macroGoals">
+        <div className='form-outline mb-4' id="weight">
           <label className='form-label'>Weight: </label>
-            <input className='form-control' type="text" onChange={(e) => setWeight(e.target.value)}/>
+            <input className='form-control' type="text" onChange={(e) => setWeight(e.target.value)} placeholder="lbs"/>
         </div>
-        <div className='form-outline mb-4'>
-          <label className='form-label'>Carb goals: </label>
-            <input className='form-control' type="text" onChange={(e) => setCarbGoal(e.target.value)}/>
-        </div>
-        <div className='form-outline mb-4'>
-          <label className='form-label'>Fat goals: </label>
-            <input className='form-control' type="text" onChange={(e) => setFatGoal(e.target.value)}/>
-        </div>
-        <div className='form-outline mb-4'>
-          <label className='form-label'>Protein goals: </label>
-            <input className='form-control' type="text" onChange={(e) => setProteinGoal(e.target.value)}/>
+        
+          <div className='form-outline mb-4' id="carb">
+            <label className='form-label'>Carb goals: </label>
+              <input className='form-control' type="text" onChange={(e) => setCarbGoal(e.target.value)} placeholder="%"/>
           </div>
+          <div className='form-outline mb-4' id="fat">
+            <label className='form-label'>Fat goals: </label>
+              <input className='form-control' type="text" onChange={(e) => setFatGoal(e.target.value)} placeholder="%"/>
+          </div>
+          <div className='form-outline mb-4' id="protein">
+            <label className='form-label'>Protein goals: </label>
+              <input className='form-control' type="text" onChange={(e) => setProteinGoal(e.target.value)}placeholder="%"/>
+            </div>
+        </div>
+        <div id="activityLevelContainer">
           <div className='form-outline mb-4'>
             <label className='form-label'>Activity Levels: </label>
               <Slider
@@ -214,15 +222,16 @@ function CreateProfileForm({user, setUser}) {
                 onChange={(e) => setActivityLevel(e.target.value)}
               />
           </div>
-          <div className='form-outline mb-4'>
+        </div>
+          <div className='form-outline mb-4'id="weightGoal">
             <label className='form-label'>Are you trying to gain, maintain, or lose weight? </label>
-            <select class="custom-select mr-sm-2" id="inlineFormCustomSelect" onChange={(e) => setWeightGoal(e.target.value)}>
+            <select class="custom-select mr-sm-2" onChange={(e) => setWeightGoal(e.target.value)} id="weightGoalBttn">
               <option value="gain">Gain</option>
               <option value="maintain">Maintain</option>
               <option value="lose">Lose</option>
             </select>
           </div>
-        <button className="btn btn-primary btn-block mb-4" onClick={handleSubmit}>Submit</button>
+        <button id="submitBttn" className="btn btn-primary btn-block mb-4" onClick={handleSubmit}>Submit</button>
       </form>
 
       <p style={{color: 'red'}}>{errors}</p>
