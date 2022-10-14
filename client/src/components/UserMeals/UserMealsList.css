@@ -1,3 +1,9 @@
 #card-group {
   margin: 0px 10px 10px 10px
 }
+
+#recipe-bttn{
+  display: flex;
+  justify-content: center;
+  background-color: antiquewhite;
+}

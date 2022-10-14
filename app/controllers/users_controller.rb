@@ -2,6 +2,7 @@ class UsersController < ApplicationController
 skip_before_action :authorize, only: [:create, :update, :show, :delete]
   def create
     user = User.create!(user_params)
+    session[:user_id] = user.id
     render json: user, status: :created
   end
 
@@ -44,6 +45,6 @@ skip_before_action :authorize, only: [:create, :update, :show, :delete]
   end
 
   def profile_params
-    params.require(:user).permit(:id, :username, :name, :weight, :height, :carb_goal, :protein_goal, :fat_goal, :activity_level, :bmi, :weight_goal, :gender, :goal_cals, :carb_grams, :protein_grams, :fat_grams)
+    params.require(:user).permit(:id, :username, :name, :weight, :height, :carb_goal, :protein_goal, :fat_goal, :activity_level, :bmi, :weight_goal, :gender, :goal_cals, :carb_grams, :protein_grams, :fat_grams, :height_feet, :height_inch, :age)
   end
 end

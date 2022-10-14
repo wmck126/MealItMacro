@@ -18,7 +18,7 @@ input:hover {
   margin-right: 25%;
 }
 
-.profList {
+#profList {
   margin-left: 25%;
   float: left
 }
@@ -33,4 +33,14 @@ input:hover {
 
 #deleteAccount {
   margin-top: 50px;
+}
+
+#editAccount {
+  margin-top: 50px;
+}
+
+#buttons {
+  display: flex;
+  flex-direction: row;
+  gap: 10px
 }

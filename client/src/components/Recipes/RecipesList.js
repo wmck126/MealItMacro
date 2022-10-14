@@ -86,8 +86,8 @@ function clicked(count) {
       let carbs = Math.round(recipe.carbs)
       let fat = Math.round(recipe.fat)
       return (
-        <div className="col-lg-3 col-md-4 col-sm-6">
-        <div key={recipe.meal.id} className="card" id="card">
+        <div key={recipe.meal.id} className="col-lg-3 col-md-4 col-sm-6">
+        <div  className="card" id="card">
           <img src={recipe.meal.image_url} className="card-img-top" alt="recipe image"/>
           <div className="card-body">
           <h5 className="card-title">{recipe.meal.name}</h5>

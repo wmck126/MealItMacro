@@ -10,12 +10,6 @@ function UserMealsList({user}) {
     .then(user => setNewUser(user))
   }, [])
 
-  function handleRemoveFromFavorites(id) {
-    console.log("This is id:", id )
-    fetch(`/users/${user.id}/user_meals/${id}`, {method: 'DELETE'})
-    .then(r=> console.log(r))
-  }
-  console.log(newUser)
   
   return (
     <div className="row row-cols-1 row-cols-md-6 g-5" id="card-group">
@@ -32,8 +26,8 @@ function UserMealsList({user}) {
         <h5 className="card-title">{m.name}</h5>
           <p>{mealType}</p>
           <p>{dishType}</p>
-          <a href={m.recipe_url} className="btn btn-primary">Recipe link</a>
-          {/* <button className="btn btn-primary" onClick={() => handleRemoveFromFavorites(m.id)}>Remove from favorites</button>  */}
+          <a href={m.recipe_url} id="recipe-bttn" className="btn btn-item">Recipe link</a>
+          
         </div>
       </div>
       

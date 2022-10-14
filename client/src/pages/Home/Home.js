@@ -17,7 +17,7 @@ function Home() {
         <ul id="macroList">
           <li>Protein: {user.protein_grams}g</li>
           <li>Carbs: {user.carb_grams}g</li>
-          <li>Fat: {user.fat_grams}</li>
+          <li>Fat: {user.fat_grams}g</li>
         </ul>
       </div>
     </div>

@@ -15,7 +15,7 @@ function Recipes({user, addUserMeals, recipes, setRecipes}) {
     <div id="sortAddBttn">
     {<CreateRecipeForm />}
       <Form.Select onChange={(e) => setOptions(e.target.value)} id="sortBy">
-        <option selected>Sort by:</option>
+        <option defaultValue>Sort by:</option>
         <option>Calories</option>
         <option>Protein</option>
         <option>Carbs</option>

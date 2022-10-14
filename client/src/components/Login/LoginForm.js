@@ -42,12 +42,12 @@ function LoginForm({onLogin, setClick}) {
     <form onSubmit={handleSubmit}>
       <div className='form-outline mb-4'>
         <label className='form-label'>
-          <input id="floatingInput1" placeholder="Username" className='form-control' type="text" name="userName" onChange={(e) => setUsername(e.target.value)} />
+          <input id="floatingInput1" placeholder="Username" className='form-control' type="text" name="userName" onChange={(e) => setUsername(e.target.value)} required/>
         </label>
       </div>
       <div className='form-outline mb-4'>
         <label className='form-label'>
-          <input id="floatingInput2" placeholder="Password" className='form-control' type="password" name="password" onChange={(e) => setPassword(e.target.value)} />
+          <input id="floatingInput2" placeholder="Password" className='form-control' type="password" name="password" onChange={(e) => setPassword(e.target.value)} required/>
         </label>
       </div>
       <button onClick={handleSubmit} className="btn btn-primary btn-block mb-4">Submit</button>

@@ -68,7 +68,7 @@ function App() {
             <Route path="/login" element={<Login onLogin={handleLogin}/>}/>
             <Route path="/signup" element={<SignupForm onLogin={setUser} />}/>
             <Route path="/createProfile" element={<CreateProfile user={user} setUser={setUser}/>}/>
-            <Route path='/userProfile' element={<UserProfile user={user} />} />
+            <Route path='/userProfile' element={<UserProfile user={user} setUser={setUser}/>} />
             <Route path='/recipes' element={<Recipes user={user} addUserMeals={addUserMeals} recipes={mealsToDisplay} setRecipes={setRecipes}/>} />
             <Route path='/weeklyPlan' element={<WeeklyMealPlan user={user} userMeals={userMeals}/>} />
           </Routes>

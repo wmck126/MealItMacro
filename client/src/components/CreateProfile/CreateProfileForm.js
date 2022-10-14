@@ -5,25 +5,25 @@ import './CreateProfileForm.css'
 
 function CreateProfileForm({user, setUser}) {
   const navigate = useNavigate()
+  
   const id = user.id
-  const [name, setName] = useState("")
+  const [name, setName] = useState(user.name)
   // const [imageUrl, setImageUrl] = useState("")
-  const [weight, setWeight] = useState(0)
-  const [feet, setFeet] = useState(0)
-  const [inches, setInches] = useState(0)
-  const [carbGoal, setCarbGoal] = useState(0)
-  const [proteinGoal, setProteinGoal] = useState(0)
-  const [fatGoal, setFatGoal] = useState(0)
-  const [activityLevel, setActivityLevel] = useState(0)  
-  const [bmi, setBmi] = useState(0)
-  const [weightGoal, setWeightGoal] = useState("")
+  const [weight, setWeight] = useState(user.weight)
+  const [feet, setFeet] = useState(user.height_feet)
+  const [inches, setInches] = useState(user.height_inch)
+  const [carbGoal, setCarbGoal] = useState(user.carb_goal)
+  const [proteinGoal, setProteinGoal] = useState(user.protein_goal)
+  const [fatGoal, setFatGoal] = useState(user.fat_goal)
+  const [activityLevel, setActivityLevel] = useState(user.activity_level)  
+  const [weightGoal, setWeightGoal] = useState(user.weight_goal)
   const [errors, setErrors] = useState("")
-  const [gender, setGender] = useState("")
-  const [age, setAge] = useState(0)
+  const [gender, setGender] = useState(user.gender)
+  const [age, setAge] = useState(user.age)
   let activeBMR = null
   let calcBMR = null
   let goalCals = null
-  
+  console.log(carbGoal)
 
   //Need to fix height to inches, giving way too big a number
   function handleSubmit(e){
@@ -64,7 +64,7 @@ function CreateProfileForm({user, setUser}) {
     const fat = parseInt(fatGoal)
     const protein = parseInt(proteinGoal)
     if ((carb + protein + fat) != 100 ){
-      return setErrors("All macros must add up to 100!").then(console.log(errors))
+      return setErrors("All macros must add up to 100!")
     }
     const macroCarbs = (carbGoal/100)
     const macroProtein = (proteinGoal/100)
@@ -95,7 +95,10 @@ function CreateProfileForm({user, setUser}) {
         goal_cals: goalCals,
         carb_grams: carbGrams,
         protein_grams: proteinGrams,
-        fat_grams: fatGrams
+        fat_grams: fatGrams,
+        height_inch: inches,
+        height_feet: feet,
+        age: age
       }),
     }).then((r) => {
       if (r.ok) {
@@ -134,8 +137,9 @@ function CreateProfileForm({user, setUser}) {
       value: 100,
       label: "Workout everyday!"
     }
-
   ]
+
+  
 
   return (
   <div id="profileForm" className='container'>
@@ -143,13 +147,13 @@ function CreateProfileForm({user, setUser}) {
         <div id="basicInfoContainer">
         <div className='form-outline mb-4' id="name">
           <label className='form-label'>Name: </label>
-            <input type="text" className='form-control' onChange={(e) => setName(e.target.value)}/>
+            <input type="text" className='form-control' value={name} onChange={(e) => setName(e.target.value)} required/>
         </div>
         <div id="gender">
         <div className='form-outline mb-4' >
           <label className='form-label'>Gender</label>
-          <select class="custom-select mr-sm-2" id="genderBttn" onChange={(e) => setGender(e.target.value)}>
-            <option selected>Select:</option>
+          <select className="custom-select mr-sm-2" id="genderBttn" value={gender} onChange={(e) => setGender(e.target.value)} required>
+            <option defaultValue>Select:</option>
             <option value="Male">Male</option>
             <option value="Female">Female</option>
           </select>
@@ -157,13 +161,13 @@ function CreateProfileForm({user, setUser}) {
         </div>
         <div className='form-outline mb-4' id="age">
           <label className='form-label'>Age: </label>
-            <input type="text" className='form-control' onChange={(e) => setAge(e.target.value)}/>
+            <input type="text" className='form-control' value={age} onChange={(e) => setAge(e.target.value)} required/>
         </div>
         <div className='form-row'>
           <div className='col-7' id="height">
           <label className='form-label'>Height: </label><br/>
-          <select class="custom-select mr-sm-2" id="inlineFormCustomSelect" onChange={(e) => setFeet(e.target.value)}>
-            <option selected>Feet</option>
+          <select className="custom-select mr-sm-2" id="inlineFormCustomSelect" value={feet} onChange={(e) => setFeet(e.target.value)} required>
+            <option defaultValue>Feet</option>
             <option value="1">1</option>
             <option value="2">2</option>
             <option value="3">3</option>
@@ -172,8 +176,9 @@ function CreateProfileForm({user, setUser}) {
             <option value="6">6</option>
             <option value="7">7</option>
           </select>
-          <select class="custom-select mr-sm-2" id="inlineFormCustomSelect" onChange={(e) => setInches(e.target.value)}>
-            <option selected>Inches</option>
+          <select className="custom-select mr-sm-2" id="inlineFormCustomSelect" value={inches} onChange={(e) => setInches(e.target.value)} required>
+            <option defaultValue>Inches</option>
+            <option value="1">0</option>
             <option value="1">1</option>
             <option value="2">2</option>
             <option value="3">3</option>
@@ -192,20 +197,24 @@ function CreateProfileForm({user, setUser}) {
         <div id="macroGoals">
         <div className='form-outline mb-4' id="weight">
           <label className='form-label'>Weight: </label>
-            <input className='form-control' type="text" onChange={(e) => setWeight(e.target.value)} placeholder="lbs"/>
+            <input className='form-control' type="text" value={weight} onChange={(e) => setWeight(e.target.value)} placeholder="lbs" required/>
         </div>
         
-          <div className='form-outline mb-4' id="carb">
+          
             <label className='form-label'>Carb goals: </label>
-              <input className='form-control' type="text" onChange={(e) => setCarbGoal(e.target.value)} placeholder="%"/>
+            <div className='input-group mb-3' id="carb">
+              <input className='form-control' type="text" value={carbGoal} onChange={(e) => setCarbGoal(e.target.value)} placeholder="%" required/>
+              <span className="input-group-text">%</span>
           </div>
-          <div className='form-outline mb-4' id="fat">
             <label className='form-label'>Fat goals: </label>
-              <input className='form-control' type="text" onChange={(e) => setFatGoal(e.target.value)} placeholder="%"/>
+            <div className='input-group mb-3' id="fat">
+              <input className='form-control' type="text" value={fatGoal} onChange={(e) => setFatGoal(e.target.value)} placeholder="%" required/>
+              <span className="input-group-text">%</span>
           </div>
-          <div className='form-outline mb-4' id="protein">
             <label className='form-label'>Protein goals: </label>
-              <input className='form-control' type="text" onChange={(e) => setProteinGoal(e.target.value)}placeholder="%"/>
+            <div className='input-group mb-3' id="protein">
+              <input className='form-control' type="text" value={proteinGoal} onChange={(e) => setProteinGoal(e.target.value)}placeholder="%" required/>
+              <span className="input-group-text">%</span>
             </div>
         </div>
         <div id="activityLevelContainer">
@@ -219,13 +228,14 @@ function CreateProfileForm({user, setUser}) {
                 marks={marks}
                 min={0}
                 max={100}
+                value={activityLevel}
                 onChange={(e) => setActivityLevel(e.target.value)}
               />
           </div>
         </div>
           <div className='form-outline mb-4'id="weightGoal">
             <label className='form-label'>Are you trying to gain, maintain, or lose weight? </label>
-            <select class="custom-select mr-sm-2" onChange={(e) => setWeightGoal(e.target.value)} id="weightGoalBttn">
+            <select className="custom-select mr-sm-2" value={weightGoal} onChange={(e) => setWeightGoal(e.target.value)} id="weightGoalBttn" required>
               <option value="gain">Gain</option>
               <option value="maintain">Maintain</option>
               <option value="lose">Lose</option>

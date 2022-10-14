@@ -16,6 +16,14 @@ function SignupForm({onLogin, setClick}) {
 
   function handleSubmit(e) {
     e.preventDefault()
+    if(password !== passwordConf){
+      setErrors("Password confirmation does not match Password")
+      setPasswordConf("")
+      setTimeout(() => {
+        setErrors("")
+      }, 3000)
+      return
+    }
     fetch("/signup", {
       method: "POST",
       headers: {
@@ -37,7 +45,12 @@ function SignupForm({onLogin, setClick}) {
           navigate("createProfile")
         })
       } else {
-        r.json().then((err) => setErrors(err.errors));
+        r.json().then((err) => {
+          setErrors(err.errors)
+          setTimeout(() => {
+            setErrors("")
+          }, 3000)
+        });
       }
     })
     
@@ -50,7 +63,7 @@ function SignupForm({onLogin, setClick}) {
 
         <div className='form-outline mb-4'>
           <label className='form-label'>
-            <input id="floatingInput1" placeholder="Username" className='form-control' type="text" name="userName" onChange={(e) => setUsername(e.target.value)} />
+            <input id="floatingInput1" placeholder="Username" className='form-control' type="text" name="userName" onChange={(e) => setUsername(e.target.value)} required/>
           
           <li id="userNameHelp" style={validUsername.test(username) ? null : {color: 'red'}} class="form-text">Username must be at least 5 characters</li>
           </label>
@@ -58,7 +71,7 @@ function SignupForm({onLogin, setClick}) {
 
         <div className='form-outline mb-4'>
           <label>
-            <input id="floatingInput2" placeholder="Password" className='form-control' type="password" name="password" onChange={(e) => setPassword(e.target.value)} />
+            <input id="floatingInput2" placeholder="Password" className='form-control' type="password" name="password"  onChange={(e) => setPassword(e.target.value)} required/>
           
           <li id="passHelp" style={password6chars.test(password) ? null : {color: 'red'}} class="form-text">Password must be at least 6 characters</li>
           <li id="passHelp" style={password1num.test(password) ? null : {color: 'red'}} class="form-text">Password must have at least 1 number</li>
@@ -68,7 +81,7 @@ function SignupForm({onLogin, setClick}) {
 
         <div className='form-outline mb-4'>
           <label>
-            <input id="floatingInput2" placeholder="Password Confirmation" className='form-control' type="password" name="password" onChange={(e) => setPasswordConf(e.target.value)} />
+            <input id="floatingInput2" placeholder="Password Confirmation" className='form-control' type="password" name="password" value={passwordConf} onChange={(e) => setPasswordConf(e.target.value)} required/>
           </label>
         </div>
 
