@@ -16,6 +16,7 @@ function SignupForm({onLogin, setClick}) {
 
   function handleSubmit(e) {
     e.preventDefault()
+    setLoading(true)
     if(password !== passwordConf){
       setErrors("Password confirmation does not match Password")
       setPasswordConf("")
@@ -46,6 +47,7 @@ function SignupForm({onLogin, setClick}) {
         })
       } else {
         r.json().then((err) => {
+          setLoading(false)
           setErrors(err.errors)
           setTimeout(() => {
             setErrors("")
@@ -53,7 +55,6 @@ function SignupForm({onLogin, setClick}) {
         });
       }
     })
-    
   }
 
   return (
@@ -65,7 +66,7 @@ function SignupForm({onLogin, setClick}) {
           <label className='form-label'>
             <input id="floatingInput1" placeholder="Username" className='form-control' type="text" name="userName" onChange={(e) => setUsername(e.target.value)} required/>
           
-          <li id="userNameHelp" style={validUsername.test(username) ? null : {color: 'red'}} class="form-text">Username must be at least 5 characters</li>
+          <li id="userNameHelp" style={validUsername.test(username) ? null : {color: 'red'}} className="form-text">Username must be at least 5 characters</li>
           </label>
         </div>
 
@@ -73,9 +74,9 @@ function SignupForm({onLogin, setClick}) {
           <label>
             <input id="floatingInput2" placeholder="Password" className='form-control' type="password" name="password"  onChange={(e) => setPassword(e.target.value)} required/>
           
-          <li id="passHelp" style={password6chars.test(password) ? null : {color: 'red'}} class="form-text">Password must be at least 6 characters</li>
-          <li id="passHelp" style={password1num.test(password) ? null : {color: 'red'}} class="form-text">Password must have at least 1 number</li>
-          <li id="passHelp" style={password1uppcase.test(password) ? null : {color: 'red'}} class="form-text">Password must have at least 1 uppercase letter</li>
+          <li id="passHelp" style={password6chars.test(password) ? null : {color: 'red'}} className="form-text">Password must be at least 6 characters</li>
+          <li id="passHelp" style={password1num.test(password) ? null : {color: 'red'}} className="form-text">Password must have at least 1 number</li>
+          <li id="passHelp" style={password1uppcase.test(password) ? null : {color: 'red'}} className="form-text">Password must have at least 1 uppercase letter</li>
           </label>
         </div>
 
@@ -85,9 +86,9 @@ function SignupForm({onLogin, setClick}) {
           </label>
         </div>
 
-        <button onClick={() => {handleSubmit(); setLoading(true)}} className="btn btn-primary btn-block mb-4">
-          {loading  ? <div class="spinner-border" role="status">
-                      <span class="visually-hidden">Loading...</span>
+        <button type="submit" className="btn btn-primary btn-block mb-4">
+          {loading  ? <div className="spinner-border" role="status">
+                      <span className="visually-hidden">Loading...</span>
                       </div>
                     : "Submit"}</button>
       </form>

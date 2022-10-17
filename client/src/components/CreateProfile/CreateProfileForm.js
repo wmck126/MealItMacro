@@ -8,7 +8,7 @@ function CreateProfileForm({user, setUser}) {
   
   const id = user.id
   const [name, setName] = useState(user.name)
-  // const [imageUrl, setImageUrl] = useState("")
+  //const [imageUrl, setImageUrl] = useState("")
   const [weight, setWeight] = useState(user.weight)
   const [feet, setFeet] = useState(user.height_feet)
   const [inches, setInches] = useState(user.height_inch)
@@ -20,6 +20,7 @@ function CreateProfileForm({user, setUser}) {
   const [errors, setErrors] = useState("")
   const [gender, setGender] = useState(user.gender)
   const [age, setAge] = useState(user.age)
+  const [loading, setLoading] = useState(false)
   let activeBMR = null
   let calcBMR = null
   let goalCals = null
@@ -28,6 +29,7 @@ function CreateProfileForm({user, setUser}) {
   //Need to fix height to inches, giving way too big a number
   function handleSubmit(e){
     e.preventDefault()
+    setLoading(true)
     const feetInch = parseInt(feet * 12)
     const inch = parseInt(inches)
     const heightInches = feetInch + inch
@@ -64,7 +66,10 @@ function CreateProfileForm({user, setUser}) {
     const fat = parseInt(fatGoal)
     const protein = parseInt(proteinGoal)
     if ((carb + protein + fat) != 100 ){
-      return setErrors("All macros must add up to 100!")
+      setTimeout(() => {
+      setErrors("")
+    }, 3000)
+    return setErrors("All macros must add up to 100!")
     }
     const macroCarbs = (carbGoal/100)
     const macroProtein = (proteinGoal/100)
@@ -106,10 +111,17 @@ function CreateProfileForm({user, setUser}) {
         .then((user) => {
         setUser(user)
         localStorage.setItem("user", JSON.stringify(user))
+        setLoading(false)
         })
         
       } else {
-        r.json().then((err) => setErrors(err.errors)).then(console.log(errors));
+        r.json().then((err) => {
+          setLoading(false)
+          setErrors(err.errors)
+          setTimeout(() => {
+            setErrors("")
+          }, 3000)
+        });;
       }
     })
     .then(() => navigate("/"))
@@ -241,7 +253,11 @@ function CreateProfileForm({user, setUser}) {
               <option value="lose">Lose</option>
             </select>
           </div>
-        <button id="submitBttn" className="btn btn-primary btn-block mb-4" onClick={handleSubmit}>Submit</button>
+          <button id="submitBttn" type="submit" className="btn btn-primary btn-block mb-4">
+          {loading  ? <div className="spinner-border" role="status">
+                      <span className="visually-hidden">Loading...</span>
+                      </div>
+                    : "Submit"}</button>
       </form>
 
       <p style={{color: 'red'}}>{errors}</p>

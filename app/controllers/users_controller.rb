@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-skip_before_action :authorize, only: [:create, :update, :show, :delete]
+skip_before_action :authorize, only: [:create, :update,]
   def create
     user = User.create!(user_params)
     session[:user_id] = user.id

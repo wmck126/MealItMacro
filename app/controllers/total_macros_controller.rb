@@ -1,5 +1,4 @@
 class TotalMacrosController < ApplicationController
-  skip_before_action :authorize
   def create
     meal = Meal.new(meal_params)
     meal.id = Meal.last.id + 1

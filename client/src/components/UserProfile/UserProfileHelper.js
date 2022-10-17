@@ -1,10 +1,10 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js'
 import {Pie} from 'react-chartjs-2'
 import {useNavigate } from 'react-router-dom'
 import './UserProfile.css'
 
-function UserProfileHelper({user, setUser}) {
+function UserProfileHelper({user}) {
   const navigate = useNavigate()
   ChartJS.register(ArcElement, Tooltip, Legend)
   const data = {

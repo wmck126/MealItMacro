@@ -3,11 +3,15 @@ import React, { useEffect, useState } from 'react'
 
 export default function RecipesList({user, addUserMeals, sort, recipes, setRecipes}) {
 
+  const [loading, setLoading] = useState(true)
+
 
   useEffect(() => {
     fetch("/total_macros")
     .then((r) => r.json())
-    .then((r) => setRecipes(r))
+    .then((r) => {
+      setLoading(false)
+      setRecipes(r)})
   }, [])
 
   function handleAddToUserList(e, recipe){
@@ -77,7 +81,8 @@ function clicked(count) {
 
   return (
     <>
-    {recipes.map((recipe) => {
+    {loading ? <p id="loading">Loading ...</p>
+      : recipes.map((recipe) => {
       let counter = 0
       let servingCalories = Math.round((recipe.meal.calories) / (recipe.meal.yield))
       let dishType = recipe.meal.dish_type.replace(/[\[\]"]+/g, '')
@@ -103,8 +108,6 @@ function clicked(count) {
             <a href={recipe.meal.recipe_url} className="btn btn-item" id="recipe-bttn">Recipe link</a>
             <li id="fav-bttn" 
               onClick={(e) => {
-                counter+=1
-                console.log(counter)
                 handleAddToUserList(e, recipe)
               }}><span>{clicked(counter)}</span></li>
             </div>

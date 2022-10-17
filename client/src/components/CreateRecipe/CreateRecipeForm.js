@@ -8,7 +8,6 @@ function CreateRecipeForm() {
   const [name, setName] = useState("")
   const [recipeUrl, setRecipeUrl] = useState("")
   const [yields, setYields] = useState("")
-  const [calories, setCalories] = useState("")
   const [mealType, setMealType] = useState("")
   const [dishType, setDishType] = useState("")
   const [carbs, setCarbs] = useState(0)
@@ -20,23 +19,6 @@ function CreateRecipeForm() {
 
 
   function handleSubmit(e) {
-    // fetch ("/meals", {
-    //   method: "POST",
-    //   headers: {
-    //     "Content-Type": "application/json",
-    //   },
-    //   body: JSON.stringify({
-    //     name,
-    //     recipe_url: recipeUrl,
-    //     yield: yields,
-    //     meal_type: mealType,
-    //     dish_type: dishType,
-    //     carbs,
-    //     protein,
-    //     fat,
-    //     serving_calories: servingCals
-    //   })
-    // })
 
     fetch("/total_macros", {
       method: "POST",

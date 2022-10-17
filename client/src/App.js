@@ -10,7 +10,6 @@ import Login from "./pages/Login";
 import Recipes from "./pages/Recipes";
 import UserProfile from "./pages/UserProfile";
 import WeeklyMealPlan from "./pages/WeeklyMealPlan";
-import _ from "lodash";
 import './App.css'
 
 
@@ -23,7 +22,6 @@ function App() {
 
   useEffect(() => {
     const loggedInUser = localStorage.getItem("user")
-    console.log('This is logged in user: ', loggedInUser)
     const redirection = () => redirect("/login")
     if(!loggedInUser){
       return redirection

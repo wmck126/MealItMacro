@@ -1,13 +1,26 @@
-import {useContext} from 'react'
+import {useContext, useEffect, useRef} from 'react'
 import { UserContext } from '../../components/UserContext'
+import { gsap } from 'gsap'
 import "./Home.css"
 
 function Home() {
 
   const user = useContext(UserContext)
+  const body = useRef()
 
+  useEffect(() => {
+    let ctx = gsap.context(() => {
+      gsap.from(body.current, {
+        x:-200,
+        duration: 1.5,
+        ease: "circ",
+        opacity: 0.3,
+      })
+      return () => ctx.revert()
+    })
+  }, [])
   return (
-    <div id="homeContainer">
+    <div id="homeContainer" ref={body}>
       <h1 id="title">Mealit</h1>
       <h2 id="subTitle">The recipe planner catered to your macro goals</h2>
       <div id="userGreeting">

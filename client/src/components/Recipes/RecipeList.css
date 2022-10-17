@@ -1,6 +1,9 @@
 #card-group {
   margin: 0px 10px 10px 10px
 }
+#loading{
+  text-align: center;
+}
 
 h2 {
   text-align: center;
@@ -22,6 +25,7 @@ h2 {
   border-radius: 5px;
   text-align: center;
 }
+
 
 
 #recipe-bttn{
