@@ -10,74 +10,8 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_09_24_141522) do
+ActiveRecord::Schema[7.0].define(version: 2022_09_21_141522) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "courses", force: :cascade do |t|
-    t.string "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "meals", force: :cascade do |t|
-    t.string "name"
-    t.string "image_url"
-    t.string "recipe_url"
-    t.integer "yield"
-    t.float "calories"
-    t.string "meal_type"
-    t.string "dish_type"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "total_macros", force: :cascade do |t|
-    t.float "carbs"
-    t.float "protein"
-    t.float "fat"
-    t.float "serving_calories"
-    t.bigint "meal_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["meal_id"], name: "index_total_macros_on_meal_id"
-  end
-
-  create_table "user_meals", force: :cascade do |t|
-    t.bigint "user_id"
-    t.bigint "meal_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["meal_id"], name: "index_user_meals_on_meal_id"
-    t.index ["user_id"], name: "index_user_meals_on_user_id"
-  end
-
-  create_table "users", force: :cascade do |t|
-    t.string "username"
-    t.string "password_digest"
-    t.string "name"
-    t.string "image_url"
-    t.integer "weight"
-    t.integer "height"
-    t.integer "carb_goal"
-    t.integer "protein_goal"
-    t.integer "fat_goal"
-    t.float "activity_level"
-    t.float "bmi"
-    t.string "weight_goal"
-    t.string "gender"
-    t.integer "goal_cals"
-    t.integer "carb_grams"
-    t.integer "protein_grams"
-    t.integer "fat_grams"
-    t.integer "height_feet"
-    t.integer "height_inch"
-    t.integer "age"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  add_foreign_key "total_macros", "meals"
-  add_foreign_key "user_meals", "meals"
-  add_foreign_key "user_meals", "users"
 end
